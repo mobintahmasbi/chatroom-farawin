@@ -4,10 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/Login.css">
     <title>Document</title>
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <link rel="stylesheet" href="style.css">
 <body>
-    login page
+    <div class="container">
+        <div class="form singup">
+            <h2>ثبت نام</h2>
+            <div class="inputBox">
+                <input type="text" name="" id="" required="required">
+                <i class="fa-regular fa-user"></i>
+                <span>نام کاربری</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="" id="" required="required">
+                <i class="fa-regular fa-envelope"></i>
+                <span>آدرس ایمیل</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="" id="" required="required">
+                <i class="fa-solid fa-lock"></i>
+                <span>ایجاد رمزعبور</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="" id="" required="required">
+                <i class="fa-solid fa-lock"></i>
+                <span>تایید رمزعبور</span>
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="ایجاد حساب کاربری">
+            </div>
+            <p>قبلا عضو شده ؟   
+                <a href="http://" class="login">وارد شدن</a>
+            </p>
+        </div>
+
+  <!-- Log in -->
+
+      <div class="form signin">
+        <h2>ورود</h2>
+        <div class="inputBox">
+            <input type="text" name="" id="" required="required">
+            <i class="fa-regular fa-user"></i>
+            <span>نام کاربری</span>
+        </div>
+      <div class="inputBox">
+        <input type="password" name="" id="" required="required">
+        <i class="fa-solid fa-lock"></i>
+        <span>رمزعبور</span>
+      </div>
+      <div class="inputBox">
+        <input type="submit" value="Login">
+      </div>
+        <p>ثبت نشده است ؟
+        <a href="http://" class="create">یک حساب کاربری ایجاد کنید</a>
+        </p>
+      </div>
+
+    </div>
+<script src="login_registeration.js"></script>
 </body>
 </html>
