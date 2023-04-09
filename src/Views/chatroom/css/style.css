@@ -1,0 +1,321 @@
+@font-face {
+    font-family: vazir;
+    src: url(font/Vazir-Regular-FD.woff) format('woff');
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: vazir , 'Montserrat', sans-serif;
+    /* filter: blur(5px); */
+}
+svg {
+    color: rgb(0 67 85);
+    /* color: #4b00ff; */
+    /* border-color: #4b00ff; */
+}
+.backgraond {
+    display: block;
+    background-image: url('../background/back.jpg') ;
+    /* background-attachment:fixed; */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    transition: 1s;
+
+}
+
+.continer {  
+    /* background-color: rgb(255, 186, 97); */
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 20px;
+    border: 2px solid brown; */
+}
+.shadow{
+    box-shadow: 
+     0 1px 2px rgb(0 0 0 / 10%),
+     0 2px 4px rgb(0 0 0 / 10%),
+     0 4px 8px rgb(0 0 0 / 10%),
+     0 8px 16px rgb(0 0 0 / 10%), 
+     0 16px 32px rgb(0 0 0 / 10%),
+     0 32px 64px rgb(0 0 0 / 10%);
+}
+.child {
+    width: 90%;
+    height: 92%;
+    margin: 10px;
+    /* background-color: rgb(161, 205, 231); */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+
+}
+.child2 {
+    
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+.headercht {
+    line-height: 25px;
+    border:1px solid rgb(255, 255, 255, .5);
+    backdrop-filter:blur(20px);
+    border-radius: 20px;
+    font-size: 25px;
+    margin-top: 0%;
+
+}
+.k{
+    height: 8px;
+}
+.more{
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60px;
+    border-radius: 5px;
+    margin: 0px 2% 0px 2%;
+}
+.ionicon{
+    border-color: rgb(29, 29, 29);
+    width: 100px;
+    /* height: 67px; */
+}
+
+#chatlist {
+    height: 80%;
+    display: inline-block;
+    overflow-y: auto;
+    width: auto;
+    flex-direction: column;
+    padding: 10px 0px 10px 0px;
+}
+.texchat {
+    background-color:rgba(223, 223, 223, 0.5);
+    border-radius: 0px 15px 0px 15px;
+    margin: 10px;
+    /* height: auto;  */
+    /* width: auto; */
+    padding: 10px;
+    display: flex;
+    /* flex-direction: row; */
+    height: auto; 
+    width: fit-content;
+}
+.to{
+    background-color:rgba(101, 255, 30, 0.41);
+    margin-right: inherit;
+}
+input{
+    background-color:rgb(0 0 0 / 1%);
+    font-size: 30px;
+    width: 90%;
+    height: 80%;
+    border: 2px solid rgb(255, 255, 255 , 0.5);
+    outline:none;
+    border-radius: 15px;
+    margin: 10px;
+
+}
+input:focus{
+    background-color: rgb(240, 248, 255,0.3);
+}
+
+.send{
+    font-size: 25px;
+    border-radius: 20px;
+    width: 60px;
+    height: 80%;
+    margin: 10px;
+    padding: 0 0px 0 10px;
+    line-height: 62px;
+    text-align: center;
+}
+
+.iconSend{
+    /* color: rgb(0, 0, 0); */
+    height: auto;
+    width: auto;
+    transform: rotate(180deg);
+
+}
+
+span {
+    color: rgb(255, 255, 255);
+}
+
+#pvinfo {
+    border:1px solid rgb(255, 255, 255, .5);
+    background-color: rgb(255, 255, 255,0.01);
+    backdrop-filter: blur(20px);
+    justify-content: space-between;
+    width: 400px;
+    margin: 40px 50px 40px -13px;
+    /* overflow-y: auto; */
+    display: flex;
+    flex-direction: column;
+    position:relative;
+}
+#chatroom{
+    margin: 40px 11px 40px 50px;
+    padding: 25px;
+    border-radius: 20px;
+    width: 76%;
+    /* overflow-y: auto; */
+}
+.pvlist {
+    flex-direction: column;
+    width: 100%;
+    /* align-items: center; */
+    overflow-y: auto;
+    height: 100%;
+    position: relative;
+    overflow:auto;
+}
+.hederpv{
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+    /* background-color: aliceblue; */
+    border-bottom: 1px solid rgb(255, 255, 255, .5);
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.hedermassenger{
+    flex-shrink: 1;
+    height: 50%;
+    width: 39%;
+    font-weight: bolder;
+    font-size: 25px;
+    /* background-color: aliceblue;     */
+}
+#add{
+    /* background-color: deeppink; */
+    width: 50px;
+    height: 50px;
+    line-height: 54px;
+    border-radius: 48%;
+    font-size: 50px;
+    font-weight:bolder;
+}
+
+.chatlist{
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid black; */
+    /* background-color: aqua; */
+    overflow-y: auto;
+    display: inline;
+}
+.pv{
+    width: 99%;
+    height: 80px;
+    /* overflow-y: auto; */
+    /* border-top: 2px solid black; */
+    display: flex;
+    align-items: center;
+    /* background-color: rgb(255, 255, 255); */
+    transition: .2s;
+}
+.pv:hover{
+    background-color: rgb(240, 248, 255,0.3);
+}
+.imageprofile{
+    width: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.circle{
+    background-color: deeppink;
+    width: 60px;
+    height: 60px;
+    border-radius: 45%;
+}
+.infoprofile{
+    /* background-color: bisque; */
+    width: 90%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.tex{
+    /* background-color: aqua; */
+    width: 100%;
+    height: 25px;
+}
+.t{
+    margin-top: 4px;
+    height: 20px;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+  }
+  .context-menu { 
+    position: absolute; 
+  } 
+  .menuMore {
+    position: fixed;    
+    z-index: 1001;
+    width: 215px;
+    justify-content: center;
+    /* align-items: center; */
+    /* width: auto; */
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgb(64 64 64 / 5%);
+    padding: 10px 0;
+  }
+  .fa{
+    margin: 3px 15px 0 2px;
+    height: 30px;
+    display: inline-block;
+  }
+  .menuMore > li > a {
+    margin: 2px 0 0 0;
+    font: inherit;
+    border: 0;
+    padding: 10px 11px 10px 15px;
+    width: 87%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: unset;
+    color: #000;
+    font-weight: 500;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+  }
+  .menuMore > li > a:hover {
+    background:#f1f3f7;
+    color: #4b00ff;
+  }
+  .menuMore > li.trash > a:hover {
+    color: red;
+  }
+
+  .displayFlex{
+    display: flex;
+  }
