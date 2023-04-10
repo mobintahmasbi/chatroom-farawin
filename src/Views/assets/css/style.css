@@ -37,10 +37,10 @@ body{
 
 
 
-.container .form.signin,
+/* .container .form.signin,
 .container.signinForm .form.singup{
     display: none;
-}
+} */
 
 .container.signinForm .form.signin{
     display: flex;
