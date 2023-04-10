@@ -1,7 +1,7 @@
 let $ = document ;
-let login = document.querySelector('.login');
-let create = document.querySelector('.create');
-let container = document.querySelector('.container');
+let login = $.querySelector('.login');
+let create = $.querySelector('.create');
+let container = $.querySelector('.container');
 
         //    login.onclick = function(){
             

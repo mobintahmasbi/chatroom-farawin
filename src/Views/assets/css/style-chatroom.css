@@ -16,7 +16,7 @@ svg {
 }
 .backgraond {
     display: block;
-    background-image: url('../background/back.jpg') ;
+    background-image: url('/assets/image/back.jpg') ;
     /* background-attachment:fixed; */
     background-size: cover;
     background-position: center;

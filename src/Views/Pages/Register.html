@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -13,31 +12,40 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <title>Document</title>
   </head>
-  
   <body>
     <div class="container">
-      <div class="form signin">
-        <h2>ورود</h2>
+      <div class="form singup">
+        <h2>ثبت نام</h2>
         <div class="inputBox">
           <input type="text" name="" id="" required="required" />
           <i class="fa-regular fa-user"></i>
           <span>نام کاربری</span>
         </div>
         <div class="inputBox">
-          <input type="password" name="" id="" required="required" />
-          <i class="fa-solid fa-lock"></i>
-          <span>رمزعبور</span>
+          <input type="text" name="" id="" required="required" />
+          <i class="fa-regular fa-envelope"></i>
+          <span>آدرس ایمیل</span>
         </div>
         <div class="inputBox">
-          <input type="submit" value="Login" />
+          <input type="password" name="" id="" required="required" />
+          <i class="fa-solid fa-lock"></i>
+          <span>ایجاد رمزعبور</span>
+        </div>
+        <div class="inputBox">
+          <input type="password" name="" id="" required="required" />
+          <i class="fa-solid fa-lock"></i>
+          <span>تایید رمزعبور</span>
+        </div>
+        <div class="inputBox">
+          <input type="submit" value="ایجاد حساب کاربری" />
         </div>
         <p>
-          ثبت نشده است ؟
-          <a href="http://localhost:3000/register" class="create">یک حساب کاربری ایجاد کنید</a>
+          قبلا عضو شده ؟
+          <a href="http://localhost:3000/login" class="login">وارد شدن</a>
         </p>
       </div>
     </div>
-    <!-- <script src="/assets/js/login_registeration.js"></script> -->
   </body>
 </html>
