@@ -4,6 +4,12 @@ const addpv = document.querySelector('#add')
 const butMore = document.querySelector('.iconMore')
 const menuMore = document.querySelector('.menuMore')
 const body = document.querySelector('body')
+const containerAdd = document.querySelector('.containerAdd')
+const container = document.querySelector('.container')
+const closeWindowAdd = document.querySelector('.x')
+const butsave = document.querySelector('.butsave')
+const inputadd = document.querySelector('.inputadd')
+const error = document.querySelector('.error')
 
 const containerAdd = document.querySelector('.containerAdd')
 const container = document.querySelector('.container')
@@ -20,7 +26,6 @@ butsend.addEventListener('click',()=>{
 })
 
 /////add pv in listPv
-
 let addHandeler = (event) =>{
     
     let val = inputadd.value
@@ -49,7 +54,6 @@ inputadd.addEventListener('keypress',(event)=>{
         addHandeler()
     }
 })
-
 
 
 /////ButMenumore
