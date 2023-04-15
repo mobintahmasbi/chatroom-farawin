@@ -1,27 +1,5 @@
-import Sequelize from "sequelize";
-const { DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_HOST } = process.env
-const sequelize = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
-  host: DATABASE_HOST,
-  dialect: "mysql",
-});
-const Contact = sequelize.define("contact", {
-  path: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  phoneNumber: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  userId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-});
+import Contact from "../models/Contact.js";
+
 // this function get phone number and password and return an object
 // the object has message property also has all contacts that user
 // saved
@@ -52,7 +30,7 @@ async function getuser(phoneNumber, password) {
     };
   } catch (error) {
     console.error(error);
-    return { message: "An error occurred while retrieving contacts" };
+    return error
   }
 }
 export default getuser;
