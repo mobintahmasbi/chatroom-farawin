@@ -2,6 +2,7 @@
     font-family: vazir;
     src: url(font/Vazir-Regular-FD.woff) format('woff');
 }
+
 body{ 
     display: block;
     margin: 0px;
@@ -25,6 +26,7 @@ svg {
     transition: 1s;
 
 }
+
 
 .container {  
     /* background-color: rgb(255, 186, 97); */
@@ -82,7 +84,6 @@ svg {
     font-size: 40px;
     font-weight:700;
     height: 99%;
-    
 }
 .tow span {
     display: none;
@@ -230,6 +231,7 @@ input{
 input:focus{
     background-color: rgb(240, 248, 255,0.3);
 }
+
 .inputchat{
     width: 90%;
     height: 80%;

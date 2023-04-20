@@ -193,5 +193,3 @@ butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
 // butSaveContact.addEventListener("click", addHandeler);
 butSaveContact.setAttribute("onclick", 'addHandeler(2)');
-
-
