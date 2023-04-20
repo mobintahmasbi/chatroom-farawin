@@ -38,14 +38,6 @@ let openChatList = (s) => {
   console.log(s);
 };
 
-const containerAdd = document.querySelector('.containerAdd')
-const container = document.querySelector('.container')
-const closeWindowAdd = document.querySelector('.x')
-const butsave = document.querySelector('.butsave')
-const inputadd = document.querySelector('.inputadd')
-const error = document.querySelector('.error')
-
-
 /////type chat and save in text
 
 let addLocalStorage = (chats) => {
@@ -201,5 +193,3 @@ butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
 // butSaveContact.addEventListener("click", addHandeler);
 butSaveContact.setAttribute("onclick", 'addHandeler(2)');
-
-
