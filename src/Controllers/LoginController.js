@@ -1,9 +1,9 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import UserSelection from "../models/UserSelection.js";
+import getuser from "../Repository/UserSelection.js";
 import Jwt from "jsonwebtoken";
 import hashingPassword from "../Services/hashPassword.cjs";
-
+ //i am omid best
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -23,7 +23,7 @@ const Login = async (req, res, next) => {
     ) {
       if (phoneNumber.length === 11) {
         const hashpassword = hashingPassword(password);
-        const userInfo = await UserSelection(phoneNumber, hashpassword);
+        const userInfo = await getuser(phoneNumber, hashpassword);
 
         if (userInfo.status === true) {
           const token = Jwt.sign(

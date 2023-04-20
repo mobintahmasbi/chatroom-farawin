@@ -3,5 +3,5 @@
         "src"
     ],
     "ext": ".js",
-    "exec": "node server.js"
+    "exec": "node ./src/server.js"
 }
