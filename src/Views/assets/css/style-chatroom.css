@@ -82,6 +82,7 @@ svg {
     font-size: 40px;
     font-weight:700;
     height: 99%;
+    
 }
 .tow span {
     display: none;
@@ -189,11 +190,14 @@ svg {
     height: 80%;
     display: inline-block;
     overflow-y: auto;
+    overflow-x:none;
     width: auto;
     flex-direction: column;
     padding: 10px 0px 10px 0px;
 }
 .texchat {
+    display: flex;
+    flex-direction: column;
     background-color:rgba(223, 223, 223, 0.5);
     border-radius: 0px 15px 0px 15px;
     margin: 10px;
@@ -206,8 +210,13 @@ svg {
     width: fit-content;
 }
 .to{
+
     background-color:rgba(101, 255, 30, 0.41);
+
     margin-right: inherit;
+
+    
+
 }
 input{
     background-color:rgb(0 0 0 / 1%);
@@ -231,6 +240,7 @@ input:focus{
     width: 60px;
     height: 80%;
     margin: 10px;
+    margin-right: 20px;
     padding: 0 0px 0 10px;
     line-height: 62px;
     text-align: center;
