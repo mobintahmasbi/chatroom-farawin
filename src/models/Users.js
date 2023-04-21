@@ -11,7 +11,8 @@ const userSchema= new Schema({
         type:String,
         require :true,
         min :11,
-        max :11
+        max :11,
+        unique:true
     },
     path:String,
     password:{
