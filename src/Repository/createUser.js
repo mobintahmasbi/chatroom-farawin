@@ -1,5 +1,5 @@
-import mongoose, from "mongoose";
 import User from "../models/Users.js";
+
 async function createUser(username, userpassword, phoneNumber,path) {
     try {
     const userInfo=   await User.create({
@@ -22,4 +22,5 @@ async function createUser(username, userpassword, phoneNumber,path) {
         }
     }
 }
- export default createUser
+
+export default createUser
