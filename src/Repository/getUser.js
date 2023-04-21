@@ -1,35 +1,40 @@
-
+import User from "../models/Users.js";
 // this function get phone number and password and return an object
 // the object has message property also has all contacts that user
 // saved
 
 async function getuser(phoneNumber, password) {
-  // const result = {
-  //   Userinformation: {
-  //     userId: 0,
-  //     userName: "username",
-  //   },
-  //   status: true,
-  //   message: "Contacts retrieved successfully",
-  //   contacts: []
-  // }
-  // try{
-  //   const user = mongoose.insert()
-  //   if(user.id != undefined){
-  //     result.Userinformation.userId = 0;
-  //   }else{
-  //     result = {
-  //       status: false,
-  //       message: "user not defined"
-  //     }
-  //   }
-  //   return result;
-  // }
-  // catch(err){
-  //   console.log(err.message);
-  //   return err
-  // }
- 
-}
+    try {
 
+
+        const userL = await User.findOne({Phone_number: phoneNumber})
+        if (userL === null) {
+            return {
+                status: false,
+                message: "there is no user with this phone number",
+            }
+        } else if (userL.password === password) {
+            return {
+                contacts: userL.contact,
+                Userinformation: {
+                    userId: userL._id.toString(),
+                    userName: userL.name,
+                },
+                message: "find user  successfully",
+                status: true,
+            }
+
+        }
+        return {
+            status: false,
+            message: "password is false",
+        }
+    }
+    catch (e){console.log(e.message)
+    return {
+        status:false,
+        message:"something bad happens"
+    }
+    }
+}
 export default getuser;
