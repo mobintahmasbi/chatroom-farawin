@@ -5,8 +5,6 @@ import User from "../models/Users.js";
 
 async function getuser(phoneNumber, password) {
     try {
-
-
         const userL = await User.findOne({Phone_number: phoneNumber})
         if (userL === null) {
             return {
