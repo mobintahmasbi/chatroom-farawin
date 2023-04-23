@@ -2,7 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import getuser from "../Repository/getUser.js";
 import Jwt from "jsonwebtoken";
- //i am omid best
+
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -34,15 +34,12 @@ const Login = async (req, res, next) => {
             },
             privateKey
           );
-          return res.cookie("token", token).send({
-            message: "correct",
-            userInfo,
-          });
+          return res.cookie("token", token).redirect(301,"/")
         } else {
-          throw new Error("User not found!!!");
+          throw new Error("اطلاعات وارد شده صحیح نمیباشد!!!");
         }
       }
-      throw new Error("phone number Length is more than 11");
+      throw new Error("شماره تلفن وارد شده صحیح نمیباشد");
     }
     throw new Error("phone Nmuber or password format is wrong");
   } catch (err) {
