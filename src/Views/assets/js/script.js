@@ -15,6 +15,7 @@ const ssvg = document.querySelector("#ssvg");
 const pv = document.getElementsByClassName("pv");
 const pvlist = document.querySelector(".pvlist");
 
+let acconuntName = "Omid";
 let chats = [];
 let accountContacts = [];
 let contactsGlobal = [
@@ -32,17 +33,7 @@ let contactsGlobal = [
   },
 ];
 
-/////enter in chatList
-
-let openChatList = (s) => {
-  console.log(s);
-};
-
 /////type chat and save in text
-
-let addLocalStorage = (chats) => {
-  localStorage.setItem(`chats ${"d5"}`, JSON.stringify(chats));
-};
 
 let addChathandler = (arreyChats) => {
   let newChatBoxDivElem, newSvgelem, newTexChatDivElem;
@@ -69,21 +60,61 @@ let addChathandler = (arreyChats) => {
 };
 
 let addChat = () => {
-  console.log(inputchat.value);
   let chat = {
     tex: `${inputchat.value}`,
     status: "sent",
   };
 
   chats.push(chat);
-  addLocalStorage(chats);
+
   addChathandler(chats);
+
   inputchat.value = "";
+};
+
+/////enter in chatList
+
+let openChatList = (s) => {
+  console.log(s);
 };
 
 /////add pv in listPv
 pvlist.innerHTML = "";
-let adderContact = (enteredValue) => {
+
+let adderNewContact = (enteredValue) => {
+  let newContact = contactsGlobal.find((item) => {
+    return item.number == enteredValue;
+  });
+
+  if (newContact) {
+    let bolianRepeat = accountContacts.find((item) => {
+      return item.number == newContact.number;
+    });
+
+    if (bolianRepeat) {
+      console.log("repead");
+    } else {
+      accountContacts.push(newContact);
+
+      setDB(accountContacts);
+
+      pvListGenerator(accountContacts);
+    }
+
+    bolianRepeat = "";
+  } else {
+    console.log("na Mojod");
+  }
+};
+
+let setDB = (accountContacts) => {
+  localStorage.setItem(
+    `contacts${acconuntName}`,
+    JSON.stringify(accountContacts)
+  );
+};
+
+let pvListGenerator = (accountContacts) => {
   let newPvBoxDivElem,
     newImageBoxDivElem,
     newcircleDiv,
@@ -91,43 +122,42 @@ let adderContact = (enteredValue) => {
     newTexname,
     newtexEndChat;
 
-  let newContact = contactsGlobal.find((item) => {
-    return item.number == enteredValue;
+  pvlist.innerHTML = "";
+
+  accountContacts.forEach((contact) => {
+    newPvBoxDivElem = document.createElement("div");
+    newPvBoxDivElem.classList = "pv";
+    newPvBoxDivElem.setAttribute("value", `${contact.number}`);
+    newPvBoxDivElem.setAttribute("onclick", `openChatList(${contact.number})`);
+
+    newImageBoxDivElem = document.createElement("div");
+    newImageBoxDivElem.classList = "imageprofile";
+
+    newcircleDiv = document.createElement("div");
+    newcircleDiv.classList = "circle";
+
+    newInfoDiw = document.createElement("div");
+    newInfoDiw.classList = "infoprofile";
+
+    newTexname = document.createElement("div");
+    newTexname.classList = "tex";
+    newTexname.innerHTML = `${contact.name}`;
+
+    newtexEndChat = document.createElement("div");
+    newtexEndChat.classList = "tex t";
+    newtexEndChat.innerHTML = "آخرین بیام";
+
+    newContact = "";
+    newImageBoxDivElem.append(newcircleDiv);
+    newInfoDiw.append(newTexname, newtexEndChat);
+    newPvBoxDivElem.append(newImageBoxDivElem, newInfoDiw);
+    pvlist.append(newPvBoxDivElem);
   });
-
-  newPvBoxDivElem = document.createElement("div");
-  newPvBoxDivElem.classList = "pv";
-  newPvBoxDivElem.setAttribute("value", `${newContact.name}`);
-  newPvBoxDivElem.setAttribute('onclick','openChatList(' + 'newContact.name' + ')');
-
-  newImageBoxDivElem = document.createElement("div");
-  newImageBoxDivElem.classList = "imageprofile";
-
-  newcircleDiv = document.createElement("div");
-  newcircleDiv.classList = "circle";
-
-  newInfoDiw = document.createElement("div");
-  newInfoDiw.classList = "infoprofile";
-
-  newTexname = document.createElement("div");
-  newTexname.classList = "tex";
-  newTexname.innerHTML = `${newContact.name}`;
-
-  newtexEndChat = document.createElement("div");
-  newtexEndChat.classList = "tex t";
-  newtexEndChat.innerHTML = "آخرین بیام";
-
-  newContact = "";
-  newImageBoxDivElem.append(newcircleDiv);
-  newInfoDiw.append(newTexname, newtexEndChat);
-  newPvBoxDivElem.append(newImageBoxDivElem, newInfoDiw);
-  console.log(newPvBoxDivElem);
-  pvlist.append(newPvBoxDivElem);
 };
 
 let addHandeler = () => {
   let enteredValue = inputadd.value;
-  console.log(enteredValue.length);
+
   if (
     isNaN(inputadd.value) ||
     enteredValue.length > 11 ||
@@ -136,9 +166,10 @@ let addHandeler = () => {
     error.style.display = "flex";
   } else {
     error.style.display = "none";
-    adderContact(enteredValue);
+    adderNewContact(enteredValue);
     closeWindowAddHandeler();
   }
+
   inputadd.value = "";
 };
 
@@ -188,8 +219,21 @@ inputchat.addEventListener("keypress", (event) => {
     addChat();
   }
 });
+
+let getdb = () => {
+  let dbPvlist = JSON.parse(localStorage.getItem(`contacts${acconuntName}`));
+
+  if (dbPvlist) {
+    accountContacts = dbPvlist;
+  } else {
+    accountContacts = [];
+  }
+
+  pvListGenerator(accountContacts);
+};
 // pv.addEventListener('click',openChatList)
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
-// butSaveContact.addEventListener("click", addHandeler);
-butSaveContact.setAttribute("onclick", 'addHandeler(2)');
+butSaveContact.addEventListener("click", addHandeler);
+// butSaveContact.setAttribute("onclick", 'addHandeler(2)');
+window.addEventListener("load", getdb);
