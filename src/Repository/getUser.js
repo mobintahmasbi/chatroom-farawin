@@ -18,7 +18,7 @@ async function getuser(phoneNumber, password) {
                     userId: userL._id.toString(),
                     userName: userL.name,
                 },
-                message: "find user  successfully",
+                message: "find user is successfully",
                 status: true,
             }
 
