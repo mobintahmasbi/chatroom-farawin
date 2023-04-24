@@ -1,12 +1,12 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import UserSelection from "../models/UserSelection.js";
+import getuser from "../Repository/getUser.js";
 import Jwt from "jsonwebtoken";
-import hashingPassword from "../Services/hashPassword.cjs";
- //i am omid best
+
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
+const privateKey = "aroosak ghashange man ghermez pooshide"
 
 const serveLoginPage = (req, res, next) => {
   res.sendFile(path.join(__dirname, "../Views/Pages/Login.html"));
@@ -14,6 +14,7 @@ const serveLoginPage = (req, res, next) => {
 
 const Login = async (req, res, next) => {
   const { phoneNumber, password } = req.body;
+  
   try {
     if (
       typeof phoneNumber === "string" &&
@@ -22,9 +23,7 @@ const Login = async (req, res, next) => {
       phoneNumber !== null
     ) {
       if (phoneNumber.length === 11) {
-        const hashpassword = hashingPassword(password);
-        const userInfo = await UserSelection(phoneNumber, hashpassword);
-
+        const userInfo = await getuser(phoneNumber, password);
         if (userInfo.status === true) {
           const token = Jwt.sign(
             {
@@ -35,15 +34,12 @@ const Login = async (req, res, next) => {
             },
             privateKey
           );
-          return res.cookie("token", token).send({
-            message: "correct",
-            userInfo,
-          });
+          return res.cookie("token", token).redirect(301,"/")
         } else {
-          throw new Error("User not found!!!");
+          throw new Error("اطلاعات وارد شده صحیح نمیباشد!!!");
         }
       }
-      throw new Error("phone number Length is more than 11");
+      throw new Error("شماره تلفن وارد شده صحیح نمیباشد");
     }
     throw new Error("phone Nmuber or password format is wrong");
   } catch (err) {

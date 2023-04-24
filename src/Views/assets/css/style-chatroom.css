@@ -2,22 +2,22 @@
     font-family: vazir;
     src: url(font/Vazir-Regular-FD.woff) format('woff');
 }
-body{
+body{ 
+    display: block;
     margin: 0px;
     padding: 0px;
     border: 0px;
     font-family: vazir , 'Montserrat', sans-serif;
-    /* filter: blur(5px); */
 }
 svg {
     color: rgb(0 67 85);
-    /* color: #4b00ff; */
-    /* border-color: #4b00ff; */
+    cursor: pointer;
+
 }
+
 .backgraond {
     display: block;
     background-image: url('/assets/image/back.jpg') ;
-    /* background-attachment:fixed; */
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -26,7 +26,7 @@ svg {
 
 }
 
-.continer {  
+.container {  
     /* background-color: rgb(255, 186, 97); */
     flex-direction: row;
     width: 100%;
@@ -36,6 +36,100 @@ svg {
     align-items: center;
     /* border-radius: 20px;
     border: 2px solid brown; */
+}
+
+.containerAdd{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.2);
+    transition: 1s;
+}
+.WindowAdd{
+    border-radius: 20px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-self: center;
+    position: relative;
+    background: rgb(255, 255, 255,.90);
+    width: 30%;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-285%, -70%);
+    transition: 1s;
+}
+.window{
+    display: flex;
+    flex-direction: column;
+    /* background-color: antiquewhite; */
+    width: 100%;
+    height: auto;
+}
+.one{
+    /* background-color: rgb(228, 195, 151); */
+    height: 50px;
+    margin-bottom:30px ;
+}
+/* style="display: none;" */
+.tow{
+    color: rgb(0, 86, 86);
+    align-items: center;
+    font-size: 40px;
+    font-weight:700;
+    height: 99%;
+    
+}
+.tow span {
+    display: none;
+    font-size: 15px;
+    color: rgb(255, 38, 0);
+}
+.tow input{
+    background-color: rgb(225, 225, 225);
+}
+.towfont{
+
+    margin: 40px;
+    margin-bottom: 15px;
+    font-weight:700;
+
+    font-size: 22px;
+}
+.inputadd{
+    border-radius: 250px;
+    padding: 10px 51px;
+    width: 60%;
+    outline: 2px solid #000;
+}
+.divtemp{
+    height: 70%;
+}
+
+.butsave{
+    background-color: rgb(28, 179, 128);
+    border: none;
+    color: rgb(240, 255, 247);
+    border-radius: 500px;
+    font-size: 40px;
+    padding: 5px 50px;
+    padding-bottom: 15px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.x {
+    color: rgb(0, 0, 0);
+    position: absolute;
+    /* right: 20px; */
+    /* top: 5px; */
+    margin: 1px 14px;
+    font-size: 40px;
+    cursor: pointer;
 }
 .shadow{
     box-shadow: 
@@ -96,11 +190,14 @@ svg {
     height: 80%;
     display: inline-block;
     overflow-y: auto;
+    overflow-x:none;
     width: auto;
     flex-direction: column;
     padding: 10px 0px 10px 0px;
 }
 .texchat {
+    display: flex;
+    flex-direction: column;
     background-color:rgba(223, 223, 223, 0.5);
     border-radius: 0px 15px 0px 15px;
     margin: 10px;
@@ -113,14 +210,17 @@ svg {
     width: fit-content;
 }
 .to{
+
     background-color:rgba(101, 255, 30, 0.41);
+
     margin-right: inherit;
+
+    
+
 }
 input{
     background-color:rgb(0 0 0 / 1%);
     font-size: 30px;
-    width: 90%;
-    height: 80%;
     border: 2px solid rgb(255, 255, 255 , 0.5);
     outline:none;
     border-radius: 15px;
@@ -130,13 +230,17 @@ input{
 input:focus{
     background-color: rgb(240, 248, 255,0.3);
 }
-
+.inputchat{
+    width: 90%;
+    height: 80%;
+}
 .send{
     font-size: 25px;
     border-radius: 20px;
     width: 60px;
     height: 80%;
     margin: 10px;
+    margin-right: 20px;
     padding: 0 0px 0 10px;
     line-height: 62px;
     text-align: center;
@@ -150,9 +254,7 @@ input:focus{
 
 }
 
-span {
-    color: rgb(255, 255, 255);
-}
+
 
 #pvinfo {
     border:1px solid rgb(255, 255, 255, .5);

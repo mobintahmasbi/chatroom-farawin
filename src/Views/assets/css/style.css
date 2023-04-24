@@ -1,8 +1,7 @@
 @font-face {
     font-family: iran-sansX;
-    src: url(./IRANSansX-Bold.ttf);
+    src: url(../font/IRANSansX-Bold.ttf);
 }
-
 
 *{
     margin: 0;
@@ -34,21 +33,9 @@ body{
     gap: 25px;
 }
 
-
-
-
-/* .container .form.signin,
-.container.signinForm .form.singup{
-    display: none;
-} */
-
 .container.signinForm .form.signin{
     display: flex;
 }
-
-
-
-
 
 .container .form h2{
     color: #fff;
@@ -58,9 +45,11 @@ body{
 .container .form .inputBox{
     position: relative;
     width: 300px;
+    display: flex;
+    align-items: center;
 }
 .container .form .inputBox input{
-    padding: 12px 10px 12px 48px ;
+    padding: 12px 53px 12px 15px ;
     border: none;
     width: 100%;
     background: #223243;
@@ -76,10 +65,10 @@ body{
 }
 .container .form .inputBox span{
     position: absolute;
-    left: 0;
-    padding: 12px 10px 12px 48px;
+    right: 30px;
+    padding: 12px 25px 12px 60px;
     pointer-events: none;
-    font-size: 1em;
+    font-size: .8em;
     font-weight: 300;
     transition: 0.5s;
     letter-spacing: 0.05em;
@@ -91,7 +80,7 @@ body{
      color: #00dfc4;
      border: 1px solid #00dfc4;
      background: #223243;
-     transform: translateX(25px) translateY(-7px);
+     transform: translateX(-30px) translateY(-23px);
      font-size: 0.6em;
      padding: 0 8px;
      border-radius: 10px;
@@ -105,13 +94,13 @@ body{
 
 .container .form .inputBox i{
     position: absolute;
-    top: 15px;
-    left: 16px;
+    top: 10px;
+    right: 20px;
     width: 25px;
     padding: 2px 0;
-    padding-right: 8px;
+    padding-left: 8px;
     color: #00dfc4;
-    border-right: 1px solid #00dfc4;
+    border-left: 1px solid #00dfc4;
 }
 
 .container .form .inputBox input[type="submit"]{
