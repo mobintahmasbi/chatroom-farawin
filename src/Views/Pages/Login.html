@@ -1,43 +1,39 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   
   <body>
-    <div class="container">
+    <form class="container" method="post" action="/login">
       <div class="form signin">
         <h2>ورود</h2>
         <div class="inputBox">
-          <input type="text" name="" id="" required="required" />
-          <i class="fa-regular fa-user"></i>
-          <span>نام کاربری</span>
+          <input type="text" name="phoneNumber" id="phoneNumber" required="required" />
+          <i class="material-icons">phone_android</i>
+          <span>
+            شماره تلفن
+          </span>
         </div>
         <div class="inputBox">
-          <input type="password" name="" id="" required="required" />
-          <i class="fa-solid fa-lock"></i>
+          <input type="password" name="password" id="password" required="required" />
+          <i class="material-icons">lock</i>
           <span>رمزعبور</span>
         </div>
         <div class="inputBox">
-          <input type="submit" value="Login" />
+          <input type="submit" id="send" value="ورورد" />
         </div>
         <p>
           ثبت نشده است ؟
           <a href="http://localhost:3000/register" class="create">یک حساب کاربری ایجاد کنید</a>
         </p>
       </div>
-    </div>
-    <!-- <script src="/assets/js/login_registeration.js"></script> -->
+    </form>
+    <script src="/assets/js/login.js"></script>
   </body>
 </html>

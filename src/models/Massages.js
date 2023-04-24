@@ -1,9 +1,28 @@
-// import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-// const Comment = new Schema({
-//     name: { type: String, default: 'hahaha' },
-//     age: { type: Number, min: 18, index: true },
-//     bio: { type: String, match: /[a-z]/ },
-//     date: { type: Date, default: Date.now },
-//     buff: Buffer
-//   });
+const massageSchema=new  mongoose.Schema({
+
+    writerName:{
+        type:String,
+        require :true,
+        min :3,
+        max:10,
+    },
+    sendTo:{
+        type:String,
+        require :true,
+        min :3,
+        max:10,
+    },
+    message: {
+        type:String,
+        require :true,
+    },
+    crateAt:{
+        type:Date,
+        immutible: true,
+        default: ()=> Date.now(),
+    }
+
+})
+export default  mongoose.model("Massage",massageSchema)
