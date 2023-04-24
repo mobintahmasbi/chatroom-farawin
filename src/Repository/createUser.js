@@ -1,4 +1,5 @@
 import User from "../models/Users.js";
+
 async function createUser(userName, userPassword, phoneNumber,path) {
     try {
     const userInfo=   await User.create({

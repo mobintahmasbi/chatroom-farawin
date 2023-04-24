@@ -8,7 +8,11 @@ const ServeRegisterationPage = async (req, res, next) => {
     res.sendFile(path.join(__dirname, "../Views/Pages/Register.html"));
 }
 
+const Register = async (req, res, next) => {
+    const { userName, password, phoneNumber} = req.body;
+    
+
+}
 
 
-
-export { ServeRegisterationPage }
+export { ServeRegisterationPage, Register }
