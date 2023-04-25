@@ -166,7 +166,11 @@ let addHandeler = () => {
     error.style.display = "flex";
   } else {
     error.style.display = "none";
+<<<<<<< HEAD
     adderNewContact(enteredValue);                                        
+=======
+    adderNewContact(enteredValue);
+>>>>>>> main
     closeWindowAddHandeler();
   }
 
