@@ -273,7 +273,14 @@ input:focus{
     padding: 25px;
     border-radius: 20px;
     width: 76%;
+    /* display: none; */
     /* overflow-y: auto; */
+}
+.starter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:xx-large;
 }
 .pvlist {
     flex-direction: column;

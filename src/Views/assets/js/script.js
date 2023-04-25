@@ -11,9 +11,11 @@ const butSaveContact = document.querySelector(".butsave");
 const inputadd = document.querySelector(".inputadd");
 const error = document.querySelector(".error");
 const chatlist = document.querySelector("#chatlist");
+const chatroom = document.querySelector("#chatroom");
 const ssvg = document.querySelector("#ssvg");
 const pv = document.getElementsByClassName("pv");
 const pvlist = document.querySelector(".pvlist");
+const starter = document.querySelector(".starter");
 
 let acconuntName = "Omid";
 let chats = [];
@@ -31,13 +33,19 @@ let contactsGlobal = [
     number: 09392830169,
     name: "omid",
   },
+  {
+    number: 09035083850,
+    name: "omid",
+  },
 ];
+
+let pvActive = "";
 
 /////type chat and save in text
 
 let addChathandler = (arreyChats) => {
   let newChatBoxDivElem, newSvgelem, newTexChatDivElem;
-
+  chatlist.innerHTML = ''
   arreyChats.forEach((element) => {
     newChatBoxDivElem = document.createElement("div");
     newChatBoxDivElem.classList = "texchat to";
@@ -55,27 +63,53 @@ let addChathandler = (arreyChats) => {
         </svg>`;
 
     newChatBoxDivElem.append(newTexChatDivElem, newSvgelem);
+    chatlist.append(newChatBoxDivElem);
   });
-  chatlist.append(newChatBoxDivElem);
 };
 
 let addChat = () => {
   let chat = {
     tex: `${inputchat.value}`,
     status: "sent",
+    sender: `"${acconuntName}"`,
   };
 
   chats.push(chat);
 
   addChathandler(chats);
 
+  setChatDB(chats);
+
   inputchat.value = "";
+};
+
+let setChatDB = (chats) => {
+  localStorage.setItem(`chats${pvActive}`, JSON.stringify(chats));
+};
+let getChatDB = () => {
+  let chatData = JSON.parse(localStorage.getItem(`chats${pvActive}`));
+
+  if (chatData) {
+    chats = chatData;
+  } else {
+    chats = [];
+  }
+
+  addChathandler(chats);
 };
 
 /////enter in chatList
 
 let openChatList = (s) => {
   console.log(s);
+  pvActive = s;
+  chats = "";
+
+  starter.style.display = "none";
+  chatroom.style.display = "flex";
+  chatlist.innerHTML = "";
+
+  getChatDB();
 };
 
 /////add pv in listPv
@@ -222,6 +256,9 @@ inputchat.addEventListener("keypress", (event) => {
 
 let getdb = () => {
   let dbPvlist = JSON.parse(localStorage.getItem(`contacts${acconuntName}`));
+  starter.style.display = "flex";
+  chatroom.style.display = "none";
+  console.log(starter);
 
   if (dbPvlist) {
     accountContacts = dbPvlist;
