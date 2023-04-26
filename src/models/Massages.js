@@ -21,7 +21,7 @@ const massageSchema=new  mongoose.Schema({
     crateAt:{
         type:Date,
         immutible: true,
-        default: ()=> Date.now(),
+        default: new Date()
     }
 
 })

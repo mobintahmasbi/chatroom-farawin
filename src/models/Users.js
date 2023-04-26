@@ -6,7 +6,6 @@ const userSchema= new Schema({
         min: 3,
         max:10
     },
-
     Phone_number:{
         type:String,
         require :true,
@@ -21,7 +20,8 @@ const userSchema= new Schema({
         min :8,
         max :46
     },
-    contact:[{
+    contact:[
+        {
         name: {
             type:String,
             require :true,
@@ -36,6 +36,7 @@ const userSchema= new Schema({
             max :11
         },
         path:String,
-    }]
+    }
+    ]
 })
 export default  mongoose.model("User",userSchema)
