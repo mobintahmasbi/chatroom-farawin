@@ -3,7 +3,7 @@ import User from "../models/Users.js";
 async function contactExist(userPhoneNumber, ContactPhoneNumber){
     try {
         const user = await User.findOne({Phone_number:userPhoneNumber})
-        const contact=await  user.findOne({'user.contact.Phone_number':{$elemMatch:ContactPhoneNumber}},function (err, contact) {
+        await  user.findOne({'user.contact.Phone_number':{$elemMatch:ContactPhoneNumber}},function (err, contact) {
 
             if (err){
                 return {
