@@ -6,3 +6,4 @@ async function creatContact(phoneNumberU,phoneNumber,name){
 
     }
 }
+export default creatContact;

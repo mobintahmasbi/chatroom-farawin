@@ -21,3 +21,4 @@ return {
         ]
         }
 }
+export default getContacts;

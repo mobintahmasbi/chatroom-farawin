@@ -10,3 +10,4 @@ async function findContacts(userPhoneNumber,ContactPhoneNumber){
         contactPath:String
     }
 }
+export default findContacts;
