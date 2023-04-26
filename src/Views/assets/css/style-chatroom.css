@@ -277,6 +277,9 @@ input:focus{
     /* overflow-y: auto; */
 }
 .starter{
+    margin: 40px 11px 40px 50px;
+    padding: 25px;
+    border-radius: 20px;
     width: 76%;
     display: flex;
     justify-content: center;
