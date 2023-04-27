@@ -1,4 +1,5 @@
 import User from "../models/Users.js";
+
 async function getContacts(phoneNumber){
     try {
 
