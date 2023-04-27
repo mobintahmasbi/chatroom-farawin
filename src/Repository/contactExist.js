@@ -3,32 +3,19 @@ import User from "../models/Users.js";
 async function contactExist(userPhoneNumber, ContactPhoneNumber){
     try {
         const user = await User.findOne({Phone_number:userPhoneNumber})
-        await  user.findOne({'user.contact.Phone_number':{$elemMatch:ContactPhoneNumber}},function (err, contact) {
-
-            if (err){
+        const contacts =user.contact;
+        for (let i=0;i<contacts.length;i++){
+            if (contacts[i].Phone_number===ContactPhoneNumber){
                 return {
-                status: false,
-                message:err.message
+                    status:true
                 }
             }
-
-            if (contact) {
-               return {
-               status:true,
-               message: "the contact is exist"
-               }
-            }
-
-
-        else {
-              return {
-              status: false,
-              message: "the contact is not exist"
-              }
-            }
-
         }
-        )}
+        return {
+            status:false
+        }
+
+    }
     catch (e){
         console.log(e.message)
     }

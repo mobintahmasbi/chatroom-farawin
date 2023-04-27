@@ -3,7 +3,7 @@ async function getContacts(phoneNumber){
     try {
 
         const userr=  await User.findOne({Phone_number: phoneNumber})
-        const contact = await userr.contact;
+        const contact =  userr.contact;
         return {
             status:true,
             contacts:contact
