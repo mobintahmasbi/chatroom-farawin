@@ -34,7 +34,7 @@ const userSchema= new Schema({
             min :11,
             max :11
         },
-        // path:String,
+         path:String,
     }
     ]
 })

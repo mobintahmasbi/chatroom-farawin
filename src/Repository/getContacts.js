@@ -1,24 +1,16 @@
 import User from "../models/Users.js";
 async function getContacts(phoneNumber){
-return {
-        status:true,
-        contacts:[
-            {
-                name: {
-                    type:String,
-                    require :true,
-                    min: 3,
-                    max:10
-                },
-                Phone_number:{
-                    type:String,
-                    require :true,
-                    min :11,
-                    max :11
-                },
-                path:String,
-            }
-        ]
+    try {
+
+        const userr=  await User.findOne({Phone_number: phoneNumber})
+        const contact = await userr.contact;
+        return {
+            status:true,
+            contacts:contact
         }
+    }
+    catch (e){
+        return console.log(e.message)
+    }
 }
 export default getContacts;
