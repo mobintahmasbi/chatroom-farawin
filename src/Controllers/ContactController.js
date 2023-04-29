@@ -16,6 +16,7 @@ const getContactsC = async (req, res, next) => {
         return res.send("some thing bad happend please try again")
     }
     return res.send({
+        status: true,
         User:{
             phone_number: user.phoneNumber,
             password: user.password
