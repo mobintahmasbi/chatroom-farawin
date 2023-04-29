@@ -1,5 +1,5 @@
-
 import User from "../models/Users.js";
+
 async function contactExist(userPhoneNumber, ContactPhoneNumber){
     try {
         const user = await User.findOne({Phone_number:userPhoneNumber})
@@ -18,6 +18,10 @@ async function contactExist(userPhoneNumber, ContactPhoneNumber){
     }
     catch (e){
         console.log(e.message)
+        return {
+            status: false,
+            message: e.message
+        }
     }
 }
 
