@@ -17,6 +17,7 @@ const pv = document.getElementsByClassName("pv");
 const pvlist = document.querySelector(".pvlist");
 const starter = document.querySelector(".starter");
 
+let userAccount = {}
 let acconuntName = "Omid";
 let chats = [];
 let accountContacts = [];
@@ -254,31 +255,20 @@ inputchat.addEventListener("keypress", (event) => {
   }
 });
 
-let getdb = () => {
-  setcookie()
-  fetchGetContact()
-  let getcookie = document.cookie
-  console.log(getcookie);
+let getdb = async () => {
+
+  let info = await fetchGetContact()
+  console.log(info);
   let dbPvlist = JSON.parse(localStorage.getItem(`contacts${acconuntName}`));
   starter.style.display = "flex";
   chatroom.style.display = "none";
   console.log(starter);
 
-  if (dbPvlist) {
-    accountContacts = dbPvlist;
-  } else {
     accountContacts = [];
-  }
+  
 
   pvListGenerator(accountContacts);
 };
-
-let setcookie = () => {
-  document.cookie = "use = 223;path=/ss;expires=325215"
-}
-
-
-
 
 // pv.addEventListener('click',openChatList)
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
