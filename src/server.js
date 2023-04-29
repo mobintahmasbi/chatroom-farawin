@@ -3,7 +3,7 @@ dotenv.config();
 import app from "./index.js";
 import connectionToMongo from "./boot/mogon.js";
 
-// connectionToMongo();
+connectionToMongo();
 const port = process.env.SERVER_PORT || 3000
 
 app.listen(process.env.SERVER_PORT , () => {
