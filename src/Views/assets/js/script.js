@@ -255,6 +255,10 @@ inputchat.addEventListener("keypress", (event) => {
 });
 
 let getdb = () => {
+  setcookie()
+  fetchGetContact()
+  let getcookie = document.cookie
+  console.log(getcookie);
   let dbPvlist = JSON.parse(localStorage.getItem(`contacts${acconuntName}`));
   starter.style.display = "flex";
   chatroom.style.display = "none";
@@ -268,6 +272,17 @@ let getdb = () => {
 
   pvListGenerator(accountContacts);
 };
+
+let setcookie = () => {
+  document.cookie = "use = 223;path=/ss;expires=325215"
+}
+
+let fetchGetContact = async () => {
+  let res = await fetch(`http://localhost:3000/api/v1/chatroom${acconuntName}wanted=contact`)
+  
+}
+
+
 // pv.addEventListener('click',openChatList)
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
