@@ -277,10 +277,7 @@ let setcookie = () => {
   document.cookie = "use = 223;path=/ss;expires=325215"
 }
 
-let fetchGetContact = async () => {
-  let res = await fetch(`http://localhost:3000/api/v1/chatroom${acconuntName}wanted=contact`)
-  
-}
+
 
 
 // pv.addEventListener('click',openChatList)
