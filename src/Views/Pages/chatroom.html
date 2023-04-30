@@ -1,28 +1,46 @@
 <html dir="rtl" lang="fa-IR" translate="no" spellcheck="false" font="Vazir">
-    <head>
-        <title>massenger</title>
-        <link rel="stylesheet" href="assets/css/style-chatroom.css">
-    </head>
-    <body style="background-image:'F:\1omid\NEMONE\22.jpg;' ">
-        <div id="contextMenu" class="context-menu">
-            <ul class="menuMore" style="display: none;">
-                <li class="rename"><a>
-                        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="fa">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0
+  <head>
+    <title>massenger</title>
+    <link rel="stylesheet" href="assets/css/style-chatroom.css" />
+  </head>
+  <body style="background-image: 'F:\1omid\NEMONE\22.jpg;'">
+    <div id="contextMenu" class="context-menu">
+      <ul class="menuMore" style="display: none">
+        <li class="rename">
+          <a>
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="fa"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.862 4.487l1.687-1.688a1.875 1.875 0
                                 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897
                                 1.13l-2.685.8.8-2.685a4.5 4.5 0
-                                011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                            </svg>
-                            تغییر نام کاربری</a></li>
+                                011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+              />
+            </svg>
+            تغییر نام کاربری</a
+          >
+        </li>
 
-                    <li class="trash"><a>
-                            <svg fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor"
-                                class="fa">
-                                <path stroke-linecap="round"
-                                    stroke-linejoin="round" d="M14.74 9l-.346
+        <li class="trash">
+          <a>
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="fa"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.74 9l-.346
                                     9m-4.788 0L9.26
                                     9m9.968-3.21c.342.052.682.107
                                     1.022.166m-1.022-.165L18.16 19.673a2.25 2.25
@@ -34,77 +52,99 @@
                                     0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964
                                     51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09
                                     2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                                    />
-                                </svg>حذف</a></li>
-                    </ul>
-                </div>
-                <div class="backgraond">
-                    <div class="container">
-                        <div class="child shadow" id="pvinfo">
-                            <div class="hederpv">
-                                <div class="hedermassenger">massenger</div>
-                                <div class="hedermassenger"></div>
-                                <div class="hedermassenger" id="add">
-                                    <svg fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor"
-                                        class="w-6 h-6">
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="pvlist">
-                                </div>
-                            </div>
-                            <div class="child starter">
-                                <div>empty</div>
-                            </div>
-                            <div class="child" id="chatroom">
-                                <div class="child2 headercht shadow">
-                                    <div class="imageprofile">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="infoprofile">
-                                        <div class="tex">نام کاربر</div>
-                                    </div>
-                                    <div class="more">
-                                        <svg fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5"
-                                            stroke="currentColor"
-                                            class="iconMore">
-                                            <path stroke-linecap="round"
-                                                stroke-linejoin="round" d="M3.75
+              /></svg
+            >حذف</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="backgraond">
+      <div class="container">
+        <div class="child shadow" id="pvinfo">
+          <div class="hederpv">
+            <div class="hedermassenger">massenger</div>
+            <div class="hedermassenger"></div>
+            <div class="hedermassenger" id="add">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="pvlist"></div>
+        </div>
+        <div class="child starter">
+          <div>empty</div>
+        </div>
+        <div class="child" id="chatroom">
+          <div class="child2 headercht shadow">
+            <div class="imageprofile">
+              <div class="circle"></div>
+            </div>
+            <div class="infoprofile">
+              <div class="tex">نام کاربر</div>
+            </div>
+            <div class="more">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="iconMore"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75
                                                 6.75h16.5M3.75 12h16.5m-16.5
-                                                5.25h16.5" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="child2 k"></div>
-                                    <div class="child2 " id="chatlist">
-                                        <div class="texchat">سلام</div>
-                                        <div class="texchat to">
-                                            <div></div>
-                                            <span>سلام</span>
-                                            <svg viewBox="0 0 48 48"
-                                                fill="currentColor"
-                                                style="color:aliceblue;width:22px;padding-top:8px;"
-                                                id="ssvg">
-                                                <path
-                                                    d="M12.5,36a1.5,1.5,0,0,1-1.061-.439L1.379,25.5,3.5,23.379l8.9,8.9L33.316,7.387l2.3,1.929L13.648,35.465A1.5,1.5,0,0,1,12.565,36Z"></path>
-                                                <path
-                                                    d="M45.316,7.387,24.4,32.282l-2.972-2.973-1.937,2.306,3.945,3.946A1.5,1.5,0,0,0,24.5,36h.065a1.5,1.5,0,0,0,1.083-.534L47.613,9.316Z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="child2 k"></div>
-                                    <div class="child2 headercht shadow">
-                                        <input class="inputchat" type="text">
-                                        <div class="send">
-                                            <svg class="iconSend" viewBox="0 0
-                                                24 24" fill="currentColor"
-                                                class="w-6 h-6">
-                                                <path d="M3.478 2.405a.75.75 0
+                                                5.25h16.5"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="child2 k"></div>
+          <div class="child2" id="chatlist">
+            <div class="texchat">سلام</div>
+            <div class="texchat to">
+              <div></div>
+              <span>سلام</span>
+              <svg
+                viewBox="0 0 48 48"
+                fill="currentColor"
+                style="color: aliceblue; width: 22px; padding-top: 8px"
+                id="ssvg"
+              >
+                <path
+                  d="M12.5,36a1.5,1.5,0,0,1-1.061-.439L1.379,25.5,3.5,23.379l8.9,8.9L33.316,7.387l2.3,1.929L13.648,35.465A1.5,1.5,0,0,1,12.565,36Z"
+                ></path>
+                <path
+                  d="M45.316,7.387,24.4,32.282l-2.972-2.973-1.937,2.306,3.945,3.946A1.5,1.5,0,0,0,24.5,36h.065a1.5,1.5,0,0,0,1.083-.534L47.613,9.316Z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <div class="child2 k"></div>
+          <div class="child2 headercht shadow">
+            <input class="inputchat" type="text" />
+            <div class="send">
+              <svg
+                class="iconSend"
+                viewBox="0 0
+                                                24 24"
+                fill="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  d="M3.478 2.405a.75.75 0
                                                     00-.926.94l2.432
                                                     7.905H13.5a.75.75 0 010
                                                     1.5H4.984l-2.432
@@ -112,33 +152,35 @@
                                                     60.519 60.519 0
                                                     0018.445-8.986.75.75 0
                                                     000-1.218A60.517 60.517 0
-                                                    003.478 2.405z" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="containerAdd">
-                                <div class="WindowAdd">
-                                    <div class="window one">
-                                        <span class="x">x</span>
-                                    </div>
-                                    <div class="window tow">
-                                        <div>افزوردن مخاطب</div>
-                                        <div class="towfont">شماره تماس </div>
-                                        <input class="inputadd" type="text">
-                                        <div class="divtemp">
-                                            <span class="error"> لطفا عدد
-                                                واردنموده که شامل 11 کاراکتر
-                                                باشد</span>
-                                        </div>
-                                        <button class="butsave">ذخیره</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <script src="assets/js/handelChatroom.js" defer async></script>
-                            <script src="assets/js/script.js" defer async></script>
-
-                        </body>
-                    </html>
+                                                    003.478 2.405z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="containerAdd">
+      <div class="WindowAdd">
+        <div class="window one">
+          <span class="x">x</span>
+        </div>
+        <div class="window tow">
+          <div>افزوردن مخاطب</div>
+          <div class="towfont">نام کاربری</div>
+          <input class="inputadd" type="text" />
+          <div class="towfont">شماره تماس</div>
+          <input class="inputadd" type="text" />
+          <div class="divtemp">
+            <span class="error">
+              لطفا عدد واردنموده که شامل 11 کاراکتر باشد</span
+            >
+          </div>
+          <button class="butsave">ذخیره</button>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/handelChatroom.js" defer async></script>
+    <script src="assets/js/script.js" defer async></script>
+  </body>
+</html>
