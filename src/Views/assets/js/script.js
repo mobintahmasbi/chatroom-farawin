@@ -8,7 +8,8 @@ const containerAdd = document.querySelector(".containerAdd");
 const container = document.querySelector(".container");
 const closeWindowAdd = document.querySelector(".x");
 const butSaveContact = document.querySelector(".butsave");
-const inputadd = document.querySelector(".inputadd");
+const inputNameAdd = document.querySelector("#inputNameAdd");
+const inputNumberAdd = document.querySelector("#inputNumberAdd");
 const error = document.querySelector(".error");
 const chatlist = document.querySelector("#chatlist");
 const chatroom = document.querySelector("#chatroom");
@@ -44,7 +45,7 @@ let contactsGlobal = [
 ////////////////////////////
 butMore.addEventListener("click", butMoreHandeler);
 butsend.addEventListener("click", addChat);
-inputadd.addEventListener("keypress", (event) => {
+inputNumberAdd.addEventListener("keypress", (event) => {
   if (event.charCode === 13) {
     addHandeler();
   }

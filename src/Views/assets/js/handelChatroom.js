@@ -38,18 +38,20 @@ let fetchSetContact = async () => {
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    redirect: "follow",
+    redirect: "follow", /////////////////////////////
     body: JSON.stringify({
-      userName: userName.value,
-      phoneNumber: phoneNumber.value,
-      password: password.value,
+      userName: inputNameAdd.value,
+      phoneNumber: inputNumberAdd.value,
     }),
   });
 };
-let adderNewContact = (enteredValue) => {
+let adderNewContact = (nameval, numberval) => {
   let newContact = contactsGlobal.find((item) => {
-    return item.number == enteredValue;
+    return item.number == numberval;
   });
+
+  console.log(`name => ${inputNameAdd.value}
+  number => ${inputNumberAdd.value}`);
 
   if (newContact) {
     let bolianRepeat = accountContacts.find((item) => {
@@ -124,30 +126,33 @@ let pvListGenerator = (accountContacts) => {
 };
 
 let addHandeler = () => {
-    
-  let enteredValue = inputadd.value;
-
+  let enteredNameValue = inputNameAdd.value;
+  let enteredNumberValue = inputNumberAdd.value;
   if (
-    isNaN(inputadd.value) ||
-    enteredValue.length > 11 ||
-    enteredValue.length < 11
+    isNaN(inputNumberAdd.value) ||
+    inputNumberAdd.value.length > 11 ||
+    inputNumberAdd.value.length < 11
   ) {
     error.style.display = "flex";
+    console.log("problem");
   } else {
     error.style.display = "none";
-    fetchSetContact()/////////////////////////////////////////////
-    adderNewContact(enteredValue);
+    fetchSetContact(); /////////////////////////////////////////////
+    adderNewContact(enteredNameValue, enteredNumberValue);
+    console.log("no problem");
     closeWindowAddHandeler();
   }
 
-  inputadd.value = "";
+  inputNumberAdd.value = "";
+  inputNameAdd.value = "";
 };
 
 let closeWindowAddHandeler = () => {
   container.style.filter = "none";
   error.style.display = "none";
   containerAdd.style.display = "none";
-  inputadd.value = "";
+  inputNameAdd.value = "";
+  inputNumberAdd.value = "";
 };
 
 let butStartAddPvHandler = () => {
