@@ -25,7 +25,10 @@ async function creatContact(phoneNumberU,phoneNumberC,nameC){
         }
     }
     catch (e) {
-        return   e.message
+        return  {
+            status: false,
+            message: e.message
+        }
     }
 }
 export default creatContact;
