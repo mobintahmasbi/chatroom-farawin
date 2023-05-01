@@ -40,11 +40,11 @@ let fetchSetContact = async () => {
       "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify({
-      userName: inputNameAdd.value,
-      phoneNumber: inputNumberAdd.value,
+      ContactName: inputNameAdd.value,
+      ContactPhoneNumber: inputNumberAdd.value,
     }),
   });
-  console.log(res);
+  console.log(res.json());
 };
 
 let adderNewContact = (nameval, numberval) => {
