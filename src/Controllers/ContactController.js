@@ -41,7 +41,7 @@ const createNewContactC = async (req, res, next) => {
     }
     const user = jwt.verify(token, privateKey)
     const existance = contactExist(user.phoneNumber, ContactPhoneNumber)
-    if(!existance.status){
+    if(existance.status){
         return res.send({
             status: false,
             msg: "مخاطب مورد نظر یافت نشد."
