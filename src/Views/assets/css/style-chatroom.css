@@ -94,7 +94,7 @@ svg {
 }
 .towfont{
 
-    margin: 40px;
+    margin: 20px;
     margin-bottom: 15px;
     font-weight:700;
 
@@ -127,7 +127,7 @@ svg {
     position: absolute;
     /* right: 20px; */
     /* top: 5px; */
-    margin: 1px 14px;
+    margin: -7px 17px;
     font-size: 40px;
     cursor: pointer;
 }
