@@ -31,6 +31,7 @@ function butMoreHandeler(event) {
     body.addEventListener("click", bodyhandeler);
   }, 100);
 }
+
 /////add pv in listPv
 let fetchSetContact = async () => {
   let res = await fetch(`http://localhost:3000/api/v1/chatroom/contacts`, {
@@ -38,13 +39,14 @@ let fetchSetContact = async () => {
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    redirect: "follow", /////////////////////////////
     body: JSON.stringify({
       userName: inputNameAdd.value,
       phoneNumber: inputNumberAdd.value,
     }),
   });
+  console.log(res);
 };
+
 let adderNewContact = (nameval, numberval) => {
   let newContact = contactsGlobal.find((item) => {
     return item.number == numberval;
