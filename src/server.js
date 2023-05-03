@@ -6,6 +6,6 @@ import connectionToMongo from "./boot/mogon.js";
 connectionToMongo();
 
 
-app.listen(process.env.SERVER_PORT , () => {
+app.listen("3000" , () => {
     console.log(`server is running on port ${process.env.SERVER_PORT}`);
 })
