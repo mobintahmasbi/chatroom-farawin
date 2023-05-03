@@ -11,7 +11,8 @@ async function userExist(phoneNumber){
     }
     else {
         return  {
-            status: true
+            status: true,
+            name :userL.name
         }
 }
    }
