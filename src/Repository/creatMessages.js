@@ -1,6 +1,6 @@
 import massages from "../models/messages.js";
 import mongoose from "mongoose";
-async function creatMassage( writerPhone,receiverPhone,message,ID){
+async function creatMessages(writerPhone, receiverPhone, message, ID){
  try {
      await massages.create({
          writer_phone: writerPhone,
