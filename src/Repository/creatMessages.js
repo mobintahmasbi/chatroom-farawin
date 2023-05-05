@@ -1,5 +1,5 @@
 import massages from "../models/messages.js";
-import mongoose from "mongoose";
+
 async function creatMessages(writerPhone, receiverPhone, message, ID){
  try {
      await massages.create({
@@ -12,5 +12,10 @@ async function creatMessages(writerPhone, receiverPhone, message, ID){
  }
  catch (e){
      console.log(e.message)
+     return {
+        status: false
+     }
  }
 }
+
+export default creatMessages

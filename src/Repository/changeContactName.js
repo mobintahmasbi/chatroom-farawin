@@ -1,7 +1,7 @@
 import User from "../models/Users.js";
 
 async function changeContactName(UPhoneNumber,CPhoneNumber,NewName){
-    async function changeContactName(UPhoneNumber,CPhoneNumber,NewName){
+    
         try {
             const user = await User.findOne({Phone_number: UPhoneNumber})
             const contacts = user.contact;
@@ -16,7 +16,13 @@ async function changeContactName(UPhoneNumber,CPhoneNumber,NewName){
             }
             return {status:false}
         }
-        catch (e){console.log(e.message)}
-    }
+        catch (e){
+            console.log(e.message)
+            return {
+                status: false
+            }
+        }
 
 }
+
+export default changeContactName
