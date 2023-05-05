@@ -79,7 +79,7 @@ const changeNameContact = async (req, res, next) => {
         msg: "user doesn't login !!!",
       });
     }
-    if (contactPhoneNumber === undefined || ContactNewName === undefined) {
+    if (ContactPhoneNumber === undefined || ContactNewName === undefined) {
       return res.send({
         status: false,
         msg: "wrong information!!!",
