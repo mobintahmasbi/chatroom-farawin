@@ -1,4 +1,5 @@
 import User from "../models/Users.js";
+
 async function getContacts(phoneNumber){
     try {
 
@@ -10,7 +11,11 @@ async function getContacts(phoneNumber){
         }
     }
     catch (e){
-        return console.log(e.message)
+        console.log(e.message)
+        return {
+            status: false
+        } 
+        
     }
 }
 export default getContacts;

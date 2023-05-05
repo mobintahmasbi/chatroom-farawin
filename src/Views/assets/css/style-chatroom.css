@@ -94,7 +94,7 @@ svg {
 }
 .towfont{
 
-    margin: 40px;
+    margin: 20px;
     margin-bottom: 15px;
     font-weight:700;
 
@@ -127,7 +127,7 @@ svg {
     position: absolute;
     /* right: 20px; */
     /* top: 5px; */
-    margin: 1px 14px;
+    margin: -7px 17px;
     font-size: 40px;
     cursor: pointer;
 }
@@ -277,6 +277,10 @@ input:focus{
     /* overflow-y: auto; */
 }
 .starter{
+    margin: 40px 11px 40px 50px;
+    padding: 25px;
+    border-radius: 20px;
+    width: 76%;
     display: flex;
     justify-content: center;
     align-items: center;
