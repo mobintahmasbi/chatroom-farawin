@@ -75,6 +75,9 @@ svg {
     transform: translate(-285%, -70%);
     transition: 1s;
 }
+.WindowAdd2{
+    height: 350px;
+}
 .window{
     display: flex;
     flex-direction: column;
