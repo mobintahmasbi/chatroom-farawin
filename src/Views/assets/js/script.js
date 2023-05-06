@@ -4,9 +4,10 @@ const butStartAddPv = document.querySelector("#add");
 const butMore = document.querySelector(".iconMore");
 const menuMore = document.querySelector(".menuMore");
 const body = document.querySelector("body");
-const containerAdd = document.querySelector(".containerAdd");
+const containerAdd = document.querySelector("#addContact");
 const container = document.querySelector(".container");
 const closeWindowAdd = document.querySelector(".x");
+const closeWindowAdd2 = document.querySelector(".x2");
 const butSaveContact = document.querySelector(".butsave");
 const inputNameAdd = document.querySelector("#inputNameAdd");
 const inputNumberAdd = document.querySelector("#inputNumberAdd");
@@ -60,5 +61,6 @@ inputchat.addEventListener("keypress", (event) => {
 butStartRename.addEventListener("click", butStartRenameHandeler)
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
+closeWindowAdd2.addEventListener("click", closeWindowAddHandeler);
 butSaveContact.addEventListener("click", addHandeler);
 window.addEventListener("load", getdb);

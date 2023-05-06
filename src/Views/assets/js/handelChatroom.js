@@ -160,6 +160,7 @@ let closeWindowAddHandeler = () => {
   container.style.filter = "none";
   error.style.display = "none";
   containerAdd.style.display = "none";
+  nameChange.style.display = "none";
   inputNameAdd.value = "";
   inputNumberAdd.value = "";
 };
