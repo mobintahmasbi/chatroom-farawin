@@ -17,6 +17,8 @@ const ssvg = document.querySelector("#ssvg");
 const pv = document.getElementsByClassName("pv");
 const pvlist = document.querySelector(".pvlist");
 const starter = document.querySelector(".starter");
+const nameChange = document.querySelector("#nameChange")
+const butStartRename = document.querySelector(".rename")
 
 let userAccount = {};
 let acconuntNumber = null;
@@ -55,7 +57,7 @@ inputchat.addEventListener("keypress", (event) => {
     addChat();
   }
 });
-
+butStartRename.addEventListener("click", butStartRenameHandeler)
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
 butSaveContact.addEventListener("click", addHandeler);

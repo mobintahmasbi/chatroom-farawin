@@ -48,6 +48,16 @@ svg {
     background-color: hsla(0, 0%, 0%, 0.2);
     transition: 1s;
 }
+#nameChange{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.2);
+    transition: 1s;
+}
 .WindowAdd{
     border-radius: 20px;
     display: flex;

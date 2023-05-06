@@ -34,7 +34,8 @@ function butMoreHandeler(event) {
 
 /////add pv in listPv
 let fetchSetContact = async () => {
-  let res = await fetch(`http://localhost:3000/api/v1/chatroom/contacts`, {
+  let temp22 = "";
+  await fetch(`http://localhost:3000/api/v1/chatroom/contacts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -43,14 +44,17 @@ let fetchSetContact = async () => {
       ContactName: inputNameAdd.value,
       ContactPhoneNumber: inputNumberAdd.value,
     }),
-  });
-  console.log(res.json());
+  })
+    .then((res) => res.json())
+    .then((data) => temp22 = (data.status));
+    return temp22 ;
 };
 
 let adderNewContact = (nameval, numberval) => {
-  let newContact = contactsGlobal.find((item) => {
-    return item.number == numberval;
-  });
+  let newContact = {
+     number : numberval,
+     name : nameval
+  }
 
   console.log(`name => ${inputNameAdd.value}
   number => ${inputNumberAdd.value}`);
@@ -127,7 +131,7 @@ let pvListGenerator = (accountContacts) => {
   });
 };
 
-let addHandeler = () => {
+let addHandeler = async () => {
   let enteredNameValue = inputNameAdd.value;
   let enteredNumberValue = inputNumberAdd.value;
   if (
@@ -139,12 +143,15 @@ let addHandeler = () => {
     console.log("problem");
   } else {
     error.style.display = "none";
-    fetchSetContact(); /////////////////////////////////////////////
-    adderNewContact(enteredNameValue, enteredNumberValue);
-    console.log("no problem");
+    let statusFetch = await fetchSetContact(); /////////////////////////////////////////////
+    if (statusFetch) {
+      adderNewContact(enteredNameValue, enteredNumberValue);
+      console.log("no problem");
+    } else {
+      console.log("fetch problem ");
+    }
     closeWindowAddHandeler();
   }
-
   inputNumberAdd.value = "";
   inputNameAdd.value = "";
 };
@@ -161,7 +168,12 @@ let butStartAddPvHandler = () => {
   containerAdd.style.display = "block";
   container.style.filter = "blur(10px)";
 };
+//////////rename///////////////////////////////////////////////////////////
 
+let butStartRenameHandeler = () => {
+  nameChange.style.display = "block";
+  container.style.filter = "blur(10px)";
+}
 /////enter in chatList/////////////////////////////////////////////////////////////////////////////////
 
 let openChatList = (s) => {
