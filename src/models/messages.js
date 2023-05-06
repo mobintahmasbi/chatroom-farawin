@@ -2,21 +2,26 @@ import mongoose, { Schema } from "mongoose";
 
 const massageSchema=new  mongoose.Schema({
 
-    writerName:{
+    writer_phone:{
         type:String,
         require :true,
-        min :3,
-        max:10,
+        min :11,
+        max:11,
     },
-    sendTo:{
+    receiver_phone:{
         type:String,
         require :true,
-        min :3,
-        max:10,
+        min :11,
+        max:11,
     },
     message: {
         type:String,
         require :true,
+    },
+    ID:{
+        type:String,
+        require:true
+
     },
     crateAt:{
         type:Date,
