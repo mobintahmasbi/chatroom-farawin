@@ -46,24 +46,28 @@ let fetchSetContact = async () => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => temp22 = (data.status));
-    return temp22 ;
+    .then((data) => {
+      temp22 = data;
+      console.log(data);
+    });
+
+  return temp22;
 };
 
 let adderNewContact = (nameval, numberval) => {
   let newContact = {
-     number : numberval,
-     name : nameval
-  }
+    Phone_number: numberval,
+    name: nameval,
+  };
 
   console.log(`name => ${inputNameAdd.value}
   number => ${inputNumberAdd.value}`);
 
   if (newContact) {
     let bolianRepeat = accountContacts.find((item) => {
-      return item.number == newContact.number;
+      return item.number == newContact.Phone_number;
     });
-
+    console.log(bolianRepeat);
     if (bolianRepeat) {
       console.log("repead");
     } else {
@@ -96,7 +100,7 @@ let pvListGenerator = (accountContacts) => {
     newtexEndChat;
 
   pvlist.innerHTML = "";
-
+  console.log("generator");
   accountContacts.forEach((contact) => {
     newPvBoxDivElem = document.createElement("div");
     newPvBoxDivElem.classList = "pv";
@@ -105,6 +109,7 @@ let pvListGenerator = (accountContacts) => {
       "onclick",
       `openChatList(${contact.Phone_number})`
     );
+    console.log(typeof contact.Phone_number);
 
     newImageBoxDivElem = document.createElement("div");
     newImageBoxDivElem.classList = "imageprofile";
@@ -123,7 +128,7 @@ let pvListGenerator = (accountContacts) => {
     newtexEndChat.classList = "tex t";
     newtexEndChat.innerHTML = "آخرین بیام";
 
-    newContact = "";
+    // newContact = "";
     newImageBoxDivElem.append(newcircleDiv);
     newInfoDiw.append(newTexname, newtexEndChat);
     newPvBoxDivElem.append(newImageBoxDivElem, newInfoDiw);
@@ -140,15 +145,18 @@ let addHandeler = async () => {
     inputNumberAdd.value.length < 11
   ) {
     error.style.display = "flex";
-    console.log("problem");
+    console.log("کمتر یا بیشتر از 11 کاراکتر و شامل حروف نباشد");
   } else {
     error.style.display = "none";
     let statusFetch = await fetchSetContact(); /////////////////////////////////////////////
-    if (statusFetch) {
+    console.log(statusFetch);
+    
+    if (statusFetch.status) {
       adderNewContact(enteredNameValue, enteredNumberValue);
-      console.log("no problem");
+      console.log(typeof enteredNumberValue);
+      console.log(statusFetch.msg);
     } else {
-      console.log("fetch problem ");
+      console.log(statusFetch.msg);
     }
     closeWindowAddHandeler();
   }
@@ -174,7 +182,7 @@ let butStartAddPvHandler = () => {
 let butStartRenameHandeler = () => {
   nameChange.style.display = "block";
   container.style.filter = "blur(10px)";
-}
+};
 /////enter in chatList/////////////////////////////////////////////////////////////////////////////////
 
 let openChatList = (s) => {
