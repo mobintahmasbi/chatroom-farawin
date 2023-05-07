@@ -27,7 +27,11 @@ const massageSchema=new  mongoose.Schema({
         type:Date,
         immutible: true,
         default: new Date()
+    },
+    second:{
+        type:Number,
+        immutible: true,
+        default: new Date().getSeconds()
     }
-
 })
 export default  mongoose.model("Massage",massageSchema)
