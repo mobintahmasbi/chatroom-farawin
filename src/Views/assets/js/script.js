@@ -20,6 +20,7 @@ const pvlist = document.querySelector(".pvlist");
 const starter = document.querySelector(".starter");
 const nameChange = document.querySelector("#nameChange")
 const butStartRename = document.querySelector(".rename")
+const inputRename = document.querySelector("#inputRename")
 
 let userAccount = {};
 let acconuntNumber = null;
