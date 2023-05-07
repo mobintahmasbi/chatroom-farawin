@@ -48,7 +48,6 @@ let fetchSetContact = async () => {
     .then((res) => res.json())
     .then((data) => {
       temp22 = data;
-      console.log(data);
     });
 
   return temp22;
@@ -67,7 +66,7 @@ let adderNewContact = (nameval, numberval) => {
     let bolianRepeat = accountContacts.find((item) => {
       return item.number == newContact.Phone_number;
     });
-    console.log(bolianRepeat);
+    // console.log(bolianRepeat);
     if (bolianRepeat) {
       console.log("repead");
     } else {
@@ -109,7 +108,6 @@ let pvListGenerator = (accountContacts) => {
       "onclick",
       `openChatList(${contact.Phone_number})`
     );
-    console.log(typeof contact.Phone_number);
 
     newImageBoxDivElem = document.createElement("div");
     newImageBoxDivElem.classList = "imageprofile";
@@ -148,12 +146,10 @@ let addHandeler = async () => {
     console.log("کمتر یا بیشتر از 11 کاراکتر و شامل حروف نباشد");
   } else {
     error.style.display = "none";
-    let statusFetch = await fetchSetContact(); /////////////////////////////////////////////
-    console.log(statusFetch);
+    let statusFetch = await fetchSetContact(); /////////////////////////////////////////
     
     if (statusFetch.status) {
       adderNewContact(enteredNameValue, enteredNumberValue);
-      console.log(typeof enteredNumberValue);
       console.log(statusFetch.msg);
     } else {
       console.log(statusFetch.msg);
@@ -179,10 +175,18 @@ let butStartAddPvHandler = () => {
 };
 //////////rename///////////////////////////////////////////////////////////
 
+let fetchRenameContact = () => {
+  
+}
+
 let butStartRenameHandeler = () => {
   nameChange.style.display = "block";
   container.style.filter = "blur(10px)";
 };
+
+let renameHandeler = () => {
+
+}
 /////enter in chatList/////////////////////////////////////////////////////////////////////////////////
 
 let openChatList = (s) => {
