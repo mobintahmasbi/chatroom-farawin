@@ -22,10 +22,11 @@ const starter = document.querySelector(".starter");
 const nameChange = document.querySelector("#nameChange")
 const butStartRename = document.querySelector(".rename")
 const inputRename = document.querySelector("#inputRename")
+const hederChatList = document.querySelector("#hederChatList")
 
 let userAccount = {};
 let acconuntNumber = null;
-let pvActive = "";
+let pvActive = null;
 let chats = [];
 let accountContacts = [];
 let contactsGlobal = [

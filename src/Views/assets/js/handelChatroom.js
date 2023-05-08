@@ -147,7 +147,7 @@ let addHandeler = async () => {
   } else {
     error.style.display = "none";
     let statusFetch = await fetchSetContact(); /////////////////////////////////////////
-    
+
     if (statusFetch.status) {
       adderNewContact(enteredNameValue, enteredNumberValue);
       console.log(statusFetch.msg);
@@ -175,23 +175,41 @@ let butStartAddPvHandler = () => {
 };
 //////////rename///////////////////////////////////////////////////////////
 
-let fetchRenameContact = () => {
-  
-}
+let fetchRenameContact = async () => {
+  let res = await fetch("http://localhost:3000/api/v1/chatroom/contacts", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      ContactNewName: inputRename.value,
+      ContactPhoneNumber: pvActive,
+    }),
+  });
+  return res.json();
+};
 
 let butStartRenameHandeler = () => {
   nameChange.style.display = "block";
   container.style.filter = "blur(10px)";
 };
 
-let renameHandeler = () => {
-
+let renameHandeler = async () => {
+  let res = await fetchRenameContact();
+  console.log(res);
+};
+/////enter in chatList//////////////////////////////////////////////////////////////////
+let setHederChatListHandeler = x =>{
+  hederChatList.innerHTML = x
 }
-/////enter in chatList/////////////////////////////////////////////////////////////////////////////////
 
 let openChatList = (s) => {
   console.log(s);
-  pvActive = s;
+  console.log(accountContacts);
+  pvActive = accountContacts.find((item) => {
+    return item.Phone_number == "0" + s;
+  });
+  setHederChatListHandeler(pvActive.name)
   chats = "";
 
   starter.style.display = "none";
