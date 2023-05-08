@@ -1,14 +1,14 @@
 import Massage from "../models/messages.js";
-//messageID   = last object message in chat
+//messageID   = last object ID message in chat
 //if status = false: its means this is the first time
 //if status = true : its means we need just last 5sec
-async function getMessage(messageID,recSEC,status){
+async function getMessage(messageID,status){
     try{
-  const rec=recSEC-5
+  const rec=Date.now()-5000
     if (status===true){const messages=await Massage.find({
         $and:[
             {ID:messageID},
-            {second:{$gte:rec} }
+            {second:{$gte:rec}}
         ]
     }
     )
