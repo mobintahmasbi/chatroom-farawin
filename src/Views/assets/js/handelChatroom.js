@@ -167,6 +167,7 @@ let closeWindowAddHandeler = () => {
   nameChange.style.display = "none";
   inputNameAdd.value = "";
   inputNumberAdd.value = "";
+  inputRename.value = ""
 };
 
 let butStartAddPvHandler = () => {
@@ -197,6 +198,8 @@ let butStartRenameHandeler = () => {
 let renameHandeler = async () => {
   let res = await fetchRenameContact();
   console.log(res);
+  closeWindowAddHandeler()
+  
 };
 /////enter in chatList//////////////////////////////////////////////////////////////////
 let setHederChatListHandeler = x =>{
@@ -204,8 +207,6 @@ let setHederChatListHandeler = x =>{
 }
 
 let openChatList = (s) => {
-  console.log(s);
-  console.log(accountContacts);
   pvActive = accountContacts.find((item) => {
     return item.Phone_number == "0" + s;
   });
