@@ -14,7 +14,8 @@ async function getMessage(messageID,status){
     )
     if (messages===null){
         return{
-            status:false
+            status:false,
+            msg:"the chat is already update"
         }
     }
     else return{
@@ -25,7 +26,10 @@ async function getMessage(messageID,status){
     if (status===false){
         const messages=await Massage.find({ID:messageID})
         if (messages===null){
-            return {status:false}
+            return {
+                status:false,
+                msg:"there is no message"
+            }
         }
 
        else return {
@@ -34,7 +38,8 @@ async function getMessage(messageID,status){
         }
     }}
     catch (e) {
-        console.log(e)
+        console.log(e.messages)
+        return {status:false}
     }
 }
 export default getMessage
