@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
-import createmsgId from "../Services/createmsgId";
-import creatMessages from "../Repository/creatMessages";
+import createmsgId from "../Services/createmsgId.js";
+import creatMessages from "../Repository/creatMessages.js";
 
 const privateKey = "aroosak ghashange man ghermez pooshide"
 
