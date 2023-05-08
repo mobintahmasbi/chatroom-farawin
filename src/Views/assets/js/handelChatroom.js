@@ -201,7 +201,8 @@ let renameHandeler = async () => {
   closeWindowAddHandeler()
   
 };
-/////enter in chatList//////////////////////////////////////////////////////////////////
+/////enter in chatList///////////////////////////////////////////
+
 let setHederChatListHandeler = x =>{
   hederChatList.innerHTML = x
 }
@@ -221,6 +222,7 @@ let openChatList = (s) => {
 };
 
 /////type chat and save in text
+
 let addChathandler = (arreyChats) => {
   let newChatBoxDivElem, newSvgelem, newTexChatDivElem;
   chatlist.innerHTML = "";
@@ -244,13 +246,28 @@ let addChathandler = (arreyChats) => {
     chatlist.append(newChatBoxDivElem);
   });
 };
-
-let addChat = () => {
+let fetchSetChat =  async () => {
+  let res = await fetch("http://localhost:3000/api/v1/chatroom/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      recieverPhoneNumber: pvActive.Phone_number,
+      msgtxt: inputchat.value,
+    }),
+  });
+  return res.json();
+};
+let addChat = async () => {
   let chat = {
     tex: `${inputchat.value}`,
     status: "sent",
     sender: `"${acconuntNumber}"`,
   };
+
+  let res = await fetchSetChat()
+  console.log(res);
 
   chats.push(chat);
 
@@ -275,7 +292,9 @@ let getChatDB = () => {
 
   addChathandler(chats);
 };
+
 /////ButMenumore
+
 function bodyhandeler() {
   if (menuMore.style.display == "flex") {
     menuMore.style.display = "none";
