@@ -39,6 +39,15 @@ svg {
 }
 
 .containerAdd{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.2);
+    transition: 1s;
+}
+#nameChange{
     display: none;
     position: fixed;
     width: 100%;
@@ -47,6 +56,9 @@ svg {
     left: 0;
     background-color: hsla(0, 0%, 0%, 0.2);
     transition: 1s;
+}
+#addContact{
+    display: none;
 }
 .WindowAdd{
     border-radius: 20px;
@@ -62,6 +74,9 @@ svg {
     left: 50%;
     transform: translate(-285%, -70%);
     transition: 1s;
+}
+.WindowAdd2{
+    height: 350px;
 }
 .window{
     display: flex;

@@ -4,10 +4,12 @@ const butStartAddPv = document.querySelector("#add");
 const butMore = document.querySelector(".iconMore");
 const menuMore = document.querySelector(".menuMore");
 const body = document.querySelector("body");
-const containerAdd = document.querySelector(".containerAdd");
+const containerAdd = document.querySelector("#addContact");
 const container = document.querySelector(".container");
 const closeWindowAdd = document.querySelector(".x");
-const butSaveContact = document.querySelector(".butsave");
+const closeWindowAdd2 = document.querySelector(".x2");
+const butSaveContact = document.querySelector("#butsave");
+const butRename = document.querySelector("#butRename");
 const inputNameAdd = document.querySelector("#inputNameAdd");
 const inputNumberAdd = document.querySelector("#inputNumberAdd");
 const error = document.querySelector(".error");
@@ -17,6 +19,9 @@ const ssvg = document.querySelector("#ssvg");
 const pv = document.getElementsByClassName("pv");
 const pvlist = document.querySelector(".pvlist");
 const starter = document.querySelector(".starter");
+const nameChange = document.querySelector("#nameChange")
+const butStartRename = document.querySelector(".rename")
+const inputRename = document.querySelector("#inputRename")
 
 let userAccount = {};
 let acconuntNumber = null;
@@ -55,8 +60,10 @@ inputchat.addEventListener("keypress", (event) => {
     addChat();
   }
 });
-
+butStartRename.addEventListener("click", butStartRenameHandeler)
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
+closeWindowAdd2.addEventListener("click", closeWindowAddHandeler);
 butSaveContact.addEventListener("click", addHandeler);
+butRename.addEventListener("click", renameHandeler);
 window.addEventListener("load", getdb);

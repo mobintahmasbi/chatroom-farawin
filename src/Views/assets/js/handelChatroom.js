@@ -34,7 +34,8 @@ function butMoreHandeler(event) {
 
 /////add pv in listPv
 let fetchSetContact = async () => {
-  let res = await fetch(`http://localhost:3000/api/v1/chatroom/contacts`, {
+  let temp22 = "";
+  await fetch(`http://localhost:3000/api/v1/chatroom/contacts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -43,23 +44,29 @@ let fetchSetContact = async () => {
       ContactName: inputNameAdd.value,
       ContactPhoneNumber: inputNumberAdd.value,
     }),
-  });
-  console.log(res.json());
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      temp22 = data;
+    });
+
+  return temp22;
 };
 
 let adderNewContact = (nameval, numberval) => {
-  let newContact = contactsGlobal.find((item) => {
-    return item.number == numberval;
-  });
+  let newContact = {
+    Phone_number: numberval,
+    name: nameval,
+  };
 
   console.log(`name => ${inputNameAdd.value}
   number => ${inputNumberAdd.value}`);
 
   if (newContact) {
     let bolianRepeat = accountContacts.find((item) => {
-      return item.number == newContact.number;
+      return item.number == newContact.Phone_number;
     });
-
+    // console.log(bolianRepeat);
     if (bolianRepeat) {
       console.log("repead");
     } else {
@@ -92,7 +99,7 @@ let pvListGenerator = (accountContacts) => {
     newtexEndChat;
 
   pvlist.innerHTML = "";
-
+  console.log("generator");
   accountContacts.forEach((contact) => {
     newPvBoxDivElem = document.createElement("div");
     newPvBoxDivElem.classList = "pv";
@@ -119,7 +126,7 @@ let pvListGenerator = (accountContacts) => {
     newtexEndChat.classList = "tex t";
     newtexEndChat.innerHTML = "آخرین بیام";
 
-    newContact = "";
+    // newContact = "";
     newImageBoxDivElem.append(newcircleDiv);
     newInfoDiw.append(newTexname, newtexEndChat);
     newPvBoxDivElem.append(newImageBoxDivElem, newInfoDiw);
@@ -127,7 +134,7 @@ let pvListGenerator = (accountContacts) => {
   });
 };
 
-let addHandeler = () => {
+let addHandeler = async () => {
   let enteredNameValue = inputNameAdd.value;
   let enteredNumberValue = inputNumberAdd.value;
   if (
@@ -136,15 +143,19 @@ let addHandeler = () => {
     inputNumberAdd.value.length < 11
   ) {
     error.style.display = "flex";
-    console.log("problem");
+    console.log("کمتر یا بیشتر از 11 کاراکتر و شامل حروف نباشد");
   } else {
     error.style.display = "none";
-    fetchSetContact(); /////////////////////////////////////////////
-    adderNewContact(enteredNameValue, enteredNumberValue);
-    console.log("no problem");
+    let statusFetch = await fetchSetContact(); /////////////////////////////////////////
+    
+    if (statusFetch.status) {
+      adderNewContact(enteredNameValue, enteredNumberValue);
+      console.log(statusFetch.msg);
+    } else {
+      console.log(statusFetch.msg);
+    }
     closeWindowAddHandeler();
   }
-
   inputNumberAdd.value = "";
   inputNameAdd.value = "";
 };
@@ -153,6 +164,7 @@ let closeWindowAddHandeler = () => {
   container.style.filter = "none";
   error.style.display = "none";
   containerAdd.style.display = "none";
+  nameChange.style.display = "none";
   inputNameAdd.value = "";
   inputNumberAdd.value = "";
 };
@@ -161,7 +173,20 @@ let butStartAddPvHandler = () => {
   containerAdd.style.display = "block";
   container.style.filter = "blur(10px)";
 };
+//////////rename///////////////////////////////////////////////////////////
 
+let fetchRenameContact = () => {
+  
+}
+
+let butStartRenameHandeler = () => {
+  nameChange.style.display = "block";
+  container.style.filter = "blur(10px)";
+};
+
+let renameHandeler = () => {
+
+}
 /////enter in chatList/////////////////////////////////////////////////////////////////////////////////
 
 let openChatList = (s) => {
