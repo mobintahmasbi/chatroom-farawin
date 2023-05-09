@@ -27,9 +27,9 @@ function butMoreHandeler(event) {
   } else {
     menuMore.style.display = "none";
   }
-  setTimeout(() => {
-    body.addEventListener("click", bodyhandeler);
-  }, 100);
+  // setTimeout(() => {
+  //   body.addEventListener("click", bodyhandeler);
+  // }, 100);
 }
 
 /////add pv in listPv
@@ -300,3 +300,18 @@ function bodyhandeler() {
     menuMore.style.display = "none";
   }
 }
+ //////////////////// Online Masenger ///////////////////////
+let onlineContacts = async() =>{
+  //  while(true){
+  //   await setTimeout(async() => {
+  //     // await getdb()
+  //     console.log("4000 secend get contact");
+  //   }, 15000);
+  //   // console.log("4000");
+  // }
+  setInterval(()=>{
+    // console.log("3000");
+    getdb()
+  },5000)
+}
+// onlineContacts()

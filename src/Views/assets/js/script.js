@@ -73,3 +73,5 @@ inputRename.addEventListener("keypress", (event) => {
 });
 butRename.addEventListener("click", renameHandeler);
 window.addEventListener("load", getdb);
+// getdb()
+onlineContacts()
