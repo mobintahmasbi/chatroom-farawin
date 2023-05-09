@@ -23,7 +23,7 @@ async function getMessage(messageID,status){
             messages:messages
         }
     }
-    if (status===false){
+    if (!status){
         const messages=await Massage.find({ID:messageID})
         if (messages===null){
             return {
