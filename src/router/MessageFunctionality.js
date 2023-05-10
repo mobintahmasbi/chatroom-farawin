@@ -4,6 +4,6 @@ import { pullMessage, pushMessage } from "../Controllers/messageController.js"
 const MessageFunctionalityRouter = Router()
 
 MessageFunctionalityRouter.post("/", pushMessage)
-MessageFunctionalityRouter.get("/", pullMessage)
+MessageFunctionalityRouter.post("/pull", pullMessage)
 
 export default MessageFunctionalityRouter

@@ -27,9 +27,9 @@ function butMoreHandeler(event) {
   } else {
     menuMore.style.display = "none";
   }
-  // setTimeout(() => {
-  //   body.addEventListener("click", bodyhandeler);
-  // }, 100);
+  setTimeout(() => {
+    body.addEventListener("click", bodyhandeler);
+  }, 100);
 }
 
 /////add pv in listPv
@@ -167,7 +167,7 @@ let closeWindowAddHandeler = () => {
   nameChange.style.display = "none";
   inputNameAdd.value = "";
   inputNumberAdd.value = "";
-  inputRename.value = ""
+  inputRename.value = "";
 };
 
 let butStartAddPvHandler = () => {
@@ -184,7 +184,7 @@ let fetchRenameContact = async () => {
     },
     body: JSON.stringify({
       ContactNewName: inputRename.value,
-      ContactPhoneNumber: pvActive,
+      ContactPhoneNumber: pvActive.Phone_number,
     }),
   });
   return res.json();
@@ -197,56 +197,100 @@ let butStartRenameHandeler = () => {
 
 let renameHandeler = async () => {
   let res = await fetchRenameContact();
+  await getdb();
+  await openChatList(numberPvA);
+  console.log(pvActive.Phone_number);
   console.log(res);
-  closeWindowAddHandeler()
-  
+  closeWindowAddHandeler();
 };
+
 /////enter in chatList///////////////////////////////////////////
 
-let setHederChatListHandeler = x =>{
-  hederChatList.innerHTML = x
-}
+let setHederChatListHandeler = (x) => {
+  hederChatList.innerHTML = x;
+};
 
-let openChatList = (s) => {
-  pvActive = accountContacts.find((item) => {
-    return item.Phone_number == "0" + s;
-  });
-  setHederChatListHandeler(pvActive.name)
-  chats = "";
-
-  starter.style.display = "none";
-  chatroom.style.display = "flex";
-  chatlist.innerHTML = "";
-
-  getChatDB();
+let openChatList = async (s) => {
+  // firstTime = true
+  if (s) {
+    numberPvA = s;
+    pvActive = accountContacts.find((item) => {
+      return item.Phone_number == "0" + s;
+    });
+    let res = await fetchGetChat();
+    if (res.status) {
+      starter.style.display = "none";
+      chatroom.style.display = "flex";
+      chatlist.innerHTML = "";
+      setHederChatListHandeler(pvActive.name);
+      addChathandler(res.messages);
+    }
+  }
+  // getChatDB();
 };
 
 /////type chat and save in text
-
-let addChathandler = (arreyChats) => {
+let addChathandler2 = () => {
   let newChatBoxDivElem, newSvgelem, newTexChatDivElem;
-  chatlist.innerHTML = "";
-  arreyChats.forEach((element) => {
-    newChatBoxDivElem = document.createElement("div");
-    newChatBoxDivElem.classList = "texchat to";
 
-    newTexChatDivElem = document.createElement("div");
-    newTexChatDivElem.innerHTML = element.tex;
+  newChatBoxDivElem = document.createElement("div");
+  newChatBoxDivElem.classList = "texchat to";
 
-    newSvgelem = document.createElement("svg");
-    newSvgelem.setAttribute("viewBox", "0 0 48 48");
-    newSvgelem.setAttribute("fill", "currentColor");
-    newSvgelem.setAttribute("style", "color: aliceblue;width:22px;");
-    newSvgelem.innerHTML = `<svg viewBox="0 0 48 48" fill="currentColor" style="color: aliceblue;width:22px;padding-top: 8px;" id="ssvg">
+  newTexChatDivElem = document.createElement("div");
+  newTexChatDivElem.innerHTML = inputchat.value;
+
+  newSvgelem = document.createElement("svg");
+  newSvgelem.setAttribute("viewBox", "0 0 48 48");
+  newSvgelem.setAttribute("fill", "currentColor");
+  newSvgelem.setAttribute("style", "color: aliceblue;width:22px;");
+  newSvgelem.innerHTML = `<svg viewBox="0 0 48 48" fill="currentColor" style="color: aliceblue;width:22px;padding-top: 8px;" id="ssvg">
           <path d="M12.5,36a1.5,1.5,0,0,1-1.061-.439L1.379,25.5,3.5,23.379l8.9,8.9L33.316,7.387l2.3,1.929L13.648,35.465A1.5,1.5,0,0,1,12.565,36Z"></path>
           <path d="M45.316,7.387,24.4,32.282l-2.972-2.973-1.937,2.306,3.945,3.946A1.5,1.5,0,0,0,24.5,36h.065a1.5,1.5,0,0,0,1.083-.534L47.613,9.316Z"></path>
           </svg>`;
 
-    newChatBoxDivElem.append(newTexChatDivElem, newSvgelem);
-    chatlist.append(newChatBoxDivElem);
+  newChatBoxDivElem.append(newTexChatDivElem, newSvgelem);
+
+  chatlist.append(newChatBoxDivElem);
+};
+
+let addChathandler = (arreyChats) => {
+  let newChatBoxDivElem, newSvgelem, newTexChatDivElem;
+  chatlist.innerHTML = "";
+
+  console.log(pvActive.Phone_number);
+
+  arreyChats.forEach((element) => {
+    // console.log(element);
+    newChatBoxDivElem = document.createElement("div");
+
+    if (element.writer_phone !== pvActive.Phone_number) {
+      newChatBoxDivElem.classList = "texchat to";
+      newSvgelem = document.createElement("svg");
+      newSvgelem.setAttribute("viewBox", "0 0 48 48");
+      newSvgelem.setAttribute("fill", "currentColor");
+      newSvgelem.setAttribute("style", "color: aliceblue;width:22px;");
+      newSvgelem.innerHTML = `<svg viewBox="0 0 48 48" fill="currentColor" style="color: aliceblue;width:22px;padding-top: 8px;" id="ssvg">
+            <path d="M12.5,36a1.5,1.5,0,0,1-1.061-.439L1.379,25.5,3.5,23.379l8.9,8.9L33.316,7.387l2.3,1.929L13.648,35.465A1.5,1.5,0,0,1,12.565,36Z"></path>
+            <path d="M45.316,7.387,24.4,32.282l-2.972-2.973-1.937,2.306,3.945,3.946A1.5,1.5,0,0,0,24.5,36h.065a1.5,1.5,0,0,0,1.083-.534L47.613,9.316Z"></path>
+            </svg>`;
+
+      newTexChatDivElem = document.createElement("div");
+      newTexChatDivElem.innerHTML = element.message;
+
+      newChatBoxDivElem.append(newTexChatDivElem, newSvgelem);
+      chatlist.append(newChatBoxDivElem);
+    } else {
+      newChatBoxDivElem.classList = "texchat";
+
+      newTexChatDivElem = document.createElement("div");
+      newTexChatDivElem.innerHTML = element.message;
+
+      newChatBoxDivElem.append(newTexChatDivElem);
+      chatlist.append(newChatBoxDivElem);
+    }
   });
 };
-let fetchSetChat =  async () => {
+let fetchSetChat = async () => {
   let res = await fetch("http://localhost:3000/api/v1/chatroom/messages", {
     method: "POST",
     headers: {
@@ -266,14 +310,15 @@ let addChat = async () => {
     sender: `"${acconuntNumber}"`,
   };
 
-  let res = await fetchSetChat()
+  let res = await fetchSetChat();
   console.log(res);
 
+  addChathandler2();
   chats.push(chat);
 
-  addChathandler(chats);
+  // addChathandler(chats);
 
-  setChatDB(chats);
+  // setChatDB(chats);
 
   inputchat.value = "";
 };
@@ -281,18 +326,32 @@ let addChat = async () => {
 let setChatDB = (chats) => {
   localStorage.setItem(`chats${pvActive}`, JSON.stringify(chats));
 };
-let getChatDB = () => {
-  let chatData = JSON.parse(localStorage.getItem(`chats${pvActive}`));
+// let getChatDB = () => {
+//   let chatData = JSON.parse(localStorage.getItem(`chats${pvActive}`));
 
-  if (chatData) {
-    chats = chatData;
-  } else {
-    chats = [];
-  }
+//   if (chatData) {
+//     chats = chatData;
+//   } else {
+//     chats = [];
+//   }
 
-  addChathandler(chats);
+//   addChathandler(chats);
+// };
+
+//////////////// get chats
+let fetchGetChat = async () => {
+  let res = await fetch("http://localhost:3000/api/v1/chatroom/messages/pull", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      firstTime: true,
+      contactPhoneNumber: pvActive.Phone_number,
+    }),
+  });
+  return res.json();
 };
-
 /////ButMenumore
 
 function bodyhandeler() {
@@ -300,18 +359,11 @@ function bodyhandeler() {
     menuMore.style.display = "none";
   }
 }
- //////////////////// Online Masenger ///////////////////////
-let onlineContacts = async() =>{
-  //  while(true){
-  //   await setTimeout(async() => {
-  //     // await getdb()
-  //     console.log("4000 secend get contact");
-  //   }, 15000);
-  //   // console.log("4000");
-  // }
-  setInterval(()=>{
-    // console.log("3000");
-    getdb()
-  },5000)
-}
+//////////////////// Online Masenger ///////////////////////
+let onlineContacts = async () => {
+  setInterval(async () => {
+    await getdb();
+    await openChatList(numberPvA);
+  }, 20000);
+};
 // onlineContacts()

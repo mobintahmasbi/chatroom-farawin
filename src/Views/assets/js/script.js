@@ -29,6 +29,8 @@ let acconuntNumber = null;
 let pvActive = null;
 let chats = [];
 let accountContacts = [];
+let firstTime = null
+let numberPvA = null
 let contactsGlobal = [
   {
     number: 09153110397,
@@ -53,7 +55,9 @@ butMore.addEventListener("click", butMoreHandeler);
 butsend.addEventListener("click", addChat);
 inputNumberAdd.addEventListener("keypress", (event) => {
   if (event.charCode === 13) {
+
     addHandeler();
+  
   }
 });
 inputchat.addEventListener("keypress", (event) => {
@@ -73,5 +77,4 @@ inputRename.addEventListener("keypress", (event) => {
 });
 butRename.addEventListener("click", renameHandeler);
 window.addEventListener("load", getdb);
-// getdb()
 onlineContacts()
