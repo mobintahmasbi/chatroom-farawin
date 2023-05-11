@@ -4,16 +4,18 @@ let fetchGetContact = async () => {
   let contss = await res.json();
   return contss;
 };
+let loadFirst = () => {
+  starter.style.display = "flex";
+  chatroom.style.display = "none";
 
+  getdb();
+};
 let getdb = async () => {
   let info = await fetchGetContact();
   userAccount = info.User;
   acconuntNumber = info.User.phone_number;
   accountContacts = info.contacts;
   console.log(info);
-
-  starter.style.display = "flex";
-  chatroom.style.display = "none";
 
   pvListGenerator(accountContacts);
 };
@@ -99,7 +101,7 @@ let pvListGenerator = (accountContacts) => {
     newtexEndChat;
 
   pvlist.innerHTML = "";
-  console.log("generator");
+  // console.log("generator");
   accountContacts.forEach((contact) => {
     newPvBoxDivElem = document.createElement("div");
     newPvBoxDivElem.classList = "pv";
@@ -211,20 +213,30 @@ let setHederChatListHandeler = (x) => {
 };
 
 let openChatList = async (s) => {
-  // firstTime = true
+  if (s !== firstTime) {
+    console.log("first time");
+  }
+  firstTime = s;
   if (s) {
     numberPvA = s;
     pvActive = accountContacts.find((item) => {
       return item.Phone_number == "0" + s;
     });
     let res = await fetchGetChat();
+    console.log(res);
     if (res.status) {
       starter.style.display = "none";
       chatroom.style.display = "flex";
-      chatlist.innerHTML = "";
-      setHederChatListHandeler(pvActive.name);
-      addChathandler(res.messages);
+      if (bol) {
+        chatlist.innerHTML = "";
+        setHederChatListHandeler(pvActive.name);
+        addChathandler(res.messages);
+      } else {
+        setHederChatListHandeler(pvActive.name);
+        addChathandler(res.messages);
+      }
     }
+    firstTime2 = firstTime;
   }
   // getChatDB();
 };
@@ -255,9 +267,6 @@ let addChathandler2 = () => {
 
 let addChathandler = (arreyChats) => {
   let newChatBoxDivElem, newSvgelem, newTexChatDivElem;
-  chatlist.innerHTML = "";
-
-  console.log(pvActive.Phone_number);
 
   arreyChats.forEach((element) => {
     // console.log(element);
@@ -304,17 +313,17 @@ let fetchSetChat = async () => {
   return res.json();
 };
 let addChat = async () => {
-  let chat = {
-    tex: `${inputchat.value}`,
-    status: "sent",
-    sender: `"${acconuntNumber}"`,
-  };
+  // let chat = {
+  //   tex: `${inputchat.value}`,
+  //   status: "sent",
+  //   sender: `"${acconuntNumber}"`,
+  // };
 
   let res = await fetchSetChat();
   console.log(res);
 
-  addChathandler2();
-  chats.push(chat);
+  // addChathandler2();
+  // chats.push(chat);
 
   // addChathandler(chats);
 
@@ -339,14 +348,17 @@ let setChatDB = (chats) => {
 // };
 
 //////////////// get chats
+
 let fetchGetChat = async () => {
+  bol = firstTime2 !== firstTime ? true : false;
+  console.log(bol);
   let res = await fetch("http://localhost:3000/api/v1/chatroom/messages/pull", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify({
-      firstTime: true,
+      firstTime: bol,
       contactPhoneNumber: pvActive.Phone_number,
     }),
   });
@@ -363,7 +375,13 @@ function bodyhandeler() {
 let onlineContacts = async () => {
   setInterval(async () => {
     await getdb();
+  }, 20000);
+};
+
+let onlineChats = async () => {
+  setInterval(async () => {
+    // if()
     await openChatList(numberPvA);
-  }, 15000);
+  }, 7000);
 };
 // onlineContacts()
