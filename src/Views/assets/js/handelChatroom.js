@@ -382,6 +382,6 @@ let onlineChats = async () => {
   setInterval(async () => {
     // if()
     await openChatList(numberPvA);
-  }, 7000);
+  }, 5000);
 };
 // onlineContacts()

@@ -8,7 +8,7 @@ const privateKey = "aroosak ghashange man ghermez pooshide";
 const pushMessage = async (req, res, next) => {
   try {
     const { token } = req.cookies;
-    const { recieverPhoneNumber, msgtxt } = req.body;
+    const { recieverPhoneNumber, msgtxt} = req.body;
     if (token === undefined) {
       return res.status(403).send("you are not login!!!");
     }
@@ -38,7 +38,7 @@ const pushMessage = async (req, res, next) => {
 const pullMessage = async (req, res, next) => {
   try {
     const { token } = req.cookies;
-    const { firstTime, contactPhoneNumber } = req.body;
+    const { firstTime, contactPhoneNumber, second} = req.body;
     if (token === undefined) {
       return res.status(403).send("you are not login!!!");
     }
@@ -66,13 +66,14 @@ const pullMessage = async (req, res, next) => {
         messages: msgs.messages
       })
     }
-    const msgs = await getMessage(ID, !firstTime)
+    const msgs = await getMessage(ID, !firstTime, second)
     if(!msgs.status){
       return res.send({
         status: false,
         msg: msgs.msg 
       })
     }
+    
     return res.send({
       status: true,
       messages: msgs.messages
