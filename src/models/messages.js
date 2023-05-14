@@ -23,15 +23,10 @@ const massageSchema=new  mongoose.Schema({
         require:true
 
     },
-    crateAt:{
-        type:Date,
-        immutible: true,
-        default: new Date()
-    },
     second:{
         type:Number,
         immutible: true,
-        default: Date.now()
+        default: Date.now
     }
 })
 export default  mongoose.model("Massage",massageSchema)

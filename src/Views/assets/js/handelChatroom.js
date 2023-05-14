@@ -1,4 +1,5 @@
 //////get of Server Account and Contacts
+var ChatListOftheContact = [];
 let fetchGetContact = async () => {
   let res = await fetch(`http://localhost:3000/api/v1/chatroom/contacts`);
   let contss = await res.json();
@@ -15,8 +16,6 @@ let getdb = async () => {
   userAccount = info.User;
   acconuntNumber = info.User.phone_number;
   accountContacts = info.contacts;
-  console.log(info);
-
   pvListGenerator(accountContacts);
 };
 
@@ -60,10 +59,6 @@ let adderNewContact = (nameval, numberval) => {
     Phone_number: numberval,
     name: nameval,
   };
-
-  console.log(`name => ${inputNameAdd.value}
-  number => ${inputNumberAdd.value}`);
-
   if (newContact) {
     let bolianRepeat = accountContacts.find((item) => {
       return item.number == newContact.Phone_number;
@@ -74,8 +69,6 @@ let adderNewContact = (nameval, numberval) => {
     } else {
       accountContacts.push(newContact);
 
-      setDB(accountContacts);
-
       pvListGenerator(accountContacts);
     }
 
@@ -83,13 +76,6 @@ let adderNewContact = (nameval, numberval) => {
   } else {
     console.log("na Mojod");
   }
-};
-
-let setDB = (accountContacts) => {
-  localStorage.setItem(
-    `contacts${acconuntNumber}`,
-    JSON.stringify(accountContacts)
-  );
 };
 
 let pvListGenerator = (accountContacts) => {
@@ -201,8 +187,6 @@ let renameHandeler = async () => {
   let res = await fetchRenameContact();
   await getdb();
   await openChatList(numberPvA);
-  console.log(pvActive.Phone_number);
-  console.log(res);
   closeWindowAddHandeler();
 };
 
@@ -213,17 +197,14 @@ let setHederChatListHandeler = (x) => {
 };
 
 let openChatList = async (s) => {
-  if (s !== firstTime) {
-    console.log("first time");
-  }
   firstTime = s;
+  
   if (s) {
     numberPvA = s;
     pvActive = accountContacts.find((item) => {
       return item.Phone_number == "0" + s;
     });
     let res = await fetchGetChat();
-    console.log(res);
     if (res.status) {
       starter.style.display = "none";
       chatroom.style.display = "flex";
@@ -313,45 +294,21 @@ let fetchSetChat = async () => {
   return res.json();
 };
 let addChat = async () => {
-  // let chat = {
-  //   tex: `${inputchat.value}`,
-  //   status: "sent",
-  //   sender: `"${acconuntNumber}"`,
-  // };
-
-  let res = await fetchSetChat();
-  console.log(res);
-
-  // addChathandler2();
-  // chats.push(chat);
-
-  // addChathandler(chats);
-
-  // setChatDB(chats);
-
+  fetchSetChat();
   inputchat.value = "";
 };
-
-let setChatDB = (chats) => {
-  localStorage.setItem(`chats${pvActive}`, JSON.stringify(chats));
-};
-// let getChatDB = () => {
-//   let chatData = JSON.parse(localStorage.getItem(`chats${pvActive}`));
-
-//   if (chatData) {
-//     chats = chatData;
-//   } else {
-//     chats = [];
-//   }
-
-//   addChathandler(chats);
-// };
 
 //////////////// get chats
 
 let fetchGetChat = async () => {
   bol = firstTime2 !== firstTime ? true : false;
+  console.log(firstTime, firstTime2);
   console.log(bol);
+  let second = null
+  console.log(ChatListOftheContact);
+  if(!bol){
+    second = ChatListOftheContact[ChatListOftheContact.length - 1].second
+  }
   let res = await fetch("http://localhost:3000/api/v1/chatroom/messages/pull", {
     method: "POST",
     headers: {
@@ -360,9 +317,21 @@ let fetchGetChat = async () => {
     body: JSON.stringify({
       firstTime: bol,
       contactPhoneNumber: pvActive.Phone_number,
+      second 
     }),
   });
-  return res.json();
+  let response = await res.json()
+  if(bol){
+    ChatListOftheContact = response.messages
+  }else{
+    if(response.messages.length !== 0){
+      response.messages.forEach((e) => {
+        ChatListOftheContact.push(e)
+      })
+    }
+  }
+  console.log(ChatListOftheContact);
+  return response;
 };
 /////ButMenumore
 

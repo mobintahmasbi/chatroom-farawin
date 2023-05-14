@@ -33,24 +33,6 @@ let firstTime = null;
 let firstTime2 = null;
 let bol = null;
 let numberPvA = null;
-let contactsGlobal = [
-  {
-    number: 09153110397,
-    name: "sajad",
-  },
-  {
-    number: 09156210397,
-    name: "zahra",
-  },
-  {
-    number: 09392830169,
-    name: "omid",
-  },
-  {
-    number: 09035083850,
-    name: "omid",
-  },
-];
 
 ////////////////////////////
 butMore.addEventListener("click", butMoreHandeler);
