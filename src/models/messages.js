@@ -5,14 +5,14 @@ const massageSchema=new  mongoose.Schema({
     writer_phone:{
         type:String,
         require :true,
-        min :11,
-        max:11,
+        minLength :11,
+        maxLength:11,
     },
     receiver_phone:{
         type:String,
         require :true,
-        min :11,
-        max:11,
+        minLength :11,
+        maxLength:11,
     },
     message: {
         type:String,

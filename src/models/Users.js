@@ -3,36 +3,36 @@ const userSchema= new Schema({
     name: {
         type:String,
         require :true,
-        min: 3,
-        max:10
+        minLength: 3,
+        maxLength:10
     },
     Phone_number:{
         type:String,
         require :true,
-        min :11,
-        max :11,
+        minLength :11,
+        maxLength :11,
         unique:true
     },
     path:String,
     password:{
         type:String,
         require :true,
-        min :8,
-        max :46
+        minLength :8,
+        maxLength :46
     },
     contact:[
         {
         name: {
             type:String,
             require :true,
-            min: 3,
-            max:10
+            minLength: 3,
+            maxLength:10
         },
         Phone_number:{
             type:String,
             require :true,
-            min :11,
-            max :11
+            minLength :11,
+            maxLength :11
         },
          path:String,
     }
