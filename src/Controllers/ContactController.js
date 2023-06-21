@@ -137,7 +137,17 @@ const deleteContactsC = async (req,res , next) => {
         msg: "مخاطب مورد نظر یافت نشد.",
       });
     }
-    const deleteStat = await deletContact(user.phoneNumber,ContactPhoneNumber)
+    const deleteStat = await deletContact(user.phoneNumber,ContactPhoneNumber);
+    if (!deleteStat) {
+      return res.send({
+        status: false,
+        msg: "مشکلی پیش آمده لطفا دوباره تلاش کنید.",
+      });
+    };
+    return res.send({
+      status: true,
+      msg: "کاربر با موفقیت محو شد",
+    });
     
 };
 
