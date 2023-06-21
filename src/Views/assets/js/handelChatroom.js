@@ -15,8 +15,6 @@ let getdb = async () => {
   userAccount = info.User;
   acconuntNumber = info.User.phone_number;
   accountContacts = info.contacts;
-  console.log(info);
-
   pvListGenerator(accountContacts);
 };
 
@@ -176,6 +174,27 @@ let butStartAddPvHandler = () => {
   containerAdd.style.display = "block";
   container.style.filter = "blur(10px)";
 };
+////////// DELET User /////////////////////////////////////////////////////
+let fetchDeleteContact = async () => {
+  let res = await fetch("http://localhost:3000/api/v1/chatroom/contacts", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      ContactPhoneNumber: pvActive.Phone_number,
+    }),
+  });
+  return res.json();
+};
+let deletContactHandeler = async () => {
+  console.log("deletContactHandeler");
+  let res = await fetchDeleteContact();
+  console.log("deletContactHandeler2");
+  console.log(res);
+  await getdb();
+  await openChatList(numberPvA);
+};
 //////////rename///////////////////////////////////////////////////////////
 
 let fetchRenameContact = async () => {
@@ -214,7 +233,7 @@ let setHederChatListHandeler = (x) => {
 
 let openChatList = async (s) => {
   if (s !== firstTime) {
-    console.log("first time");
+    // console.log("first time");
   }
   firstTime = s;
   if (s) {
@@ -223,7 +242,7 @@ let openChatList = async (s) => {
       return item.Phone_number == "0" + s;
     });
     let res = await fetchGetChat();
-    console.log(res);
+    // console.log(res);
     if (res.status) {
       starter.style.display = "none";
       chatroom.style.display = "flex";
@@ -352,8 +371,6 @@ let setChatDB = (chats) => {
 
 let fetchGetChat = async () => {
   bol = firstTime2 !== firstTime ? true : false;
-  console.log(bol);
-  console.log(second);
   let res = await fetch("http://localhost:3000/api/v1/chatroom/messages/pull", {
     method: "POST",
     headers: {

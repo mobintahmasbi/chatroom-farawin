@@ -21,6 +21,7 @@ const pvlist = document.querySelector(".pvlist");
 const starter = document.querySelector(".starter");
 const nameChange = document.querySelector("#nameChange");
 const butStartRename = document.querySelector(".rename");
+const butStartdeletContact = document.querySelector(".deletContact");
 const inputRename = document.querySelector("#inputRename");
 const hederChatList = document.querySelector("#hederChatList");
 
@@ -67,6 +68,7 @@ inputchat.addEventListener("keypress", (event) => {
   }
 });
 butStartRename.addEventListener("click", butStartRenameHandeler);
+butStartdeletContact.addEventListener("click", deletContactHandeler);
 butStartAddPv.addEventListener("click", butStartAddPvHandler);
 closeWindowAdd.addEventListener("click", closeWindowAddHandeler);
 closeWindowAdd2.addEventListener("click", closeWindowAddHandeler);
