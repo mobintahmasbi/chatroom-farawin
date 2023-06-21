@@ -33,39 +33,39 @@ const getContactsC = async (req, res, next) => {
   }
 };
 const createNewContactC = async (req, res, next) => {
-  try{
+  try {
     const { token } = req.cookies;
-  const { ContactName, ContactPhoneNumber } = req.body;
-  if (token === undefined) {
-    return res.send({
-      status: false,
+    const { ContactName, ContactPhoneNumber } = req.body;
+    if (token === undefined) {
+      return res.send({
+        status: false,
+      });
+    }
+    const user = jwt.verify(token, privateKey);
+    const existance = await contactExist(user.phoneNumber, ContactPhoneNumber);
+    if (existance.status) {
+      return res.send({
+        status: false,
+        msg: "مخاطب مورد نظر یافت نشد.",
+      });
+    }
+    const creation = await creatContact(
+      user.phoneNumber,
+      ContactPhoneNumber,
+      ContactName
+    );
+    if (!creation.status) {
+      return res.send({
+        status: false,
+        msg: "مشکلی پیش آمده لطفا دوباره تلاش کنید",
+      });
+    }
+    return res.status(201).send({
+      status: true,
+      msg: "مخاطب مورد نظر با موفقیت اضافه شد",
     });
-  }
-  const user = jwt.verify(token, privateKey);
-  const existance = await contactExist(user.phoneNumber, ContactPhoneNumber);
-  if (existance.status) {
-    return res.send({
-      status: false,
-      msg: "مخاطب مورد نظر یافت نشد.",
-    });
-  }
-  const creation = await creatContact(
-    user.phoneNumber,
-    ContactPhoneNumber,
-    ContactName
-  );
-  if (!creation.status) {
-    return res.send({
-      status: false,
-      msg: "مشکلی پیش آمده لطفا دوباره تلاش کنید",
-    });
-  }
-  return res.status(201).send({
-    status: true,
-    msg: "مخاطب مورد نظر با موفقیت اضافه شد",
-  });
-  } catch(e){
-    next(e)
+  } catch (e) {
+    next(e);
   }
 };
 
@@ -93,20 +93,51 @@ const changeNameContact = async (req, res, next) => {
         msg: "مخاطب مورد نظر یافت نشد.",
       });
     }
-    const changerstat = await changeContactName(user.phoneNumber, ContactPhoneNumber, ContactNewName)
-    if(!changerstat){
-        return res.send({
-            status: false,
-            msg: "مشکلی پیش آمده لطفا دوباره تلاش کنید."
-        })
+    const changerstat = await changeContactName(
+      user.phoneNumber,
+      ContactPhoneNumber,
+      ContactNewName
+    );
+    if (!changerstat) {
+      return res.send({
+        status: false,
+        msg: "مشکلی پیش آمده لطفا دوباره تلاش کنید.",
+      });
     }
     return res.send({
-        status: true,
-        msg: "نام کاربر با موفقیت تغییر کرد"
-    })
+      status: true,
+      msg: "نام کاربر با موفقیت تغییر کرد",
+    });
   } catch (e) {
-    next(e)
+    next(e);
   }
+};
+
+const deleteContactsC = async (req,res , next) => {
+  const { token } = req.cookies;
+  if (token === undefined) {
+    return res.send({
+      status: false,
+      msg: "user doesn't login !!!",
+    });
+  }
+
+  const { ContactPhoneNumber} = req.body
+  if (ContactPhoneNumber === undefined) {
+    return res.send({
+      status: false,
+      msg: "wrong information!!!",
+    });
+  }
+  const user = jwt.verify(token, privateKey);
+  const existance = await contactExist(user.phoneNumber, ContactPhoneNumber);
+    if (!existance.status) {
+      return res.send({
+        status: false,
+        msg: "مخاطب مورد نظر یافت نشد.",
+      });
+    }
+    const deleteStat = await deletContact(user.phoneNumber,ContactPhoneNumber)
 };
 
 export { getContactsC, createNewContactC, changeNameContact };
