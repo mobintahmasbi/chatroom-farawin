@@ -192,8 +192,11 @@ let deletContactHandeler = async () => {
   let res = await fetchDeleteContact();
   console.log("deletContactHandeler2");
   console.log(res);
+  numberPvA = null
   await getdb();
   await openChatList(numberPvA);
+  starter.style.display = "flex";
+  chatroom.style.display = "none";
 };
 //////////rename///////////////////////////////////////////////////////////
 
