@@ -1,24 +1,24 @@
 import User from "../models/Users.js";
 
 async function deletContact(UPhoneNumber, CPhoneNumber) {
-  const userU = await User.findOne({ Phone_number: UPhoneNumber });
-  const userC = await User.findOne({ Phone_number: CPhoneNumber });
-  const contactsU = userU.contacts;
-  const contactsC = userC.contacts;
-  await contactsU.forEach(async (contact) => {
-    if (contact.Phone_number === CPhoneNumber) {
-      await contact.pull({ Phone_number: CPhoneNumber });
-      await userU.save();
-    }
-  });
-  await contactsC.forEach(async (contact) => {
-    if (contact.Phone_number === UPhoneNumber) {
-      await contact.pull({ Phone_number: UPhoneNumber });
-      await userC.save()
-      return {
-        status:true
-      };
-    }
-  });
-  return {status:false}
+
+  try{
+    const statusU = await User.updateOne(
+      { Phone_number: UPhoneNumber },
+      { $pull: { contact: { Phone_number:CPhoneNumber } } }
+    )
+    const statusC = await User.updateOne(
+      { Phone_number: CPhoneNumber },
+      { $pull: { contact: { Phone_number:UPhoneNumber } } }
+    )
+    console.log(statusC , statusU);
+      return {status:true}
+
+  }catch(e){
+    console.log(e);
+    return{status:false}
+  }
+  
 }
+
+export default deletContact

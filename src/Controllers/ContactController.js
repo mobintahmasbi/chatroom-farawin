@@ -3,6 +3,7 @@ import getContacts from "../Repository/getContacts.js";
 import contactExist from "../Repository/contactExist.js";
 import creatContact from "../Repository/creatContact.js";
 import changeContactName from "../Repository/changeContactName.js";
+import deletContact from "../Repository/deleteContact.js"
 
 const privateKey = "aroosak ghashange man ghermez pooshide";
 
@@ -151,6 +152,7 @@ const deleteContactsC = async (req, res, next) => {
     });
   } catch (e) {
     console.log(e.message);
+    next(e)
   }
 };
 
